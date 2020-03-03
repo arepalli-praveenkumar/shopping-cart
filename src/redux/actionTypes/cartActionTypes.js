@@ -4,8 +4,8 @@ export const addItemToCart = (item) => ({
     payload : item
 })
 
-export const updateQuantity = () => ({
+export const updateQuantity = (newQuantity,productID) => ({
             type: "UPDATE_QUANTITY",
-            payload: 2
+            newQuantity,productID
 })
 

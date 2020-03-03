@@ -5,6 +5,7 @@ import {
     Route,
     NavLink
   } from "react-router-dom";
+import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeComponent from "../components/Home/HomeComponent";
 import ProductsComponent from "../components/Products/Products";
@@ -17,21 +18,6 @@ class RoutesComponents extends React.Component {
     render() {
         return (
             <Router>
-                {/* <div className="links">
-                    <div className="links">
-                        <NavLink to="/">Home</NavLink>
-                    </div>
-                    <div className="links">
-                        <NavLink to="/products">Products</NavLink>
-                    </div>
-                    <div className="links">
-                        <NavLink to="/cart">Cart</NavLink>
-                    </div>
-                    <div className="links">
-                        <NavLink to="/product-view/1">Product View</NavLink>
-                    </div>
-                </div> */}
-                
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
@@ -41,11 +27,8 @@ class RoutesComponents extends React.Component {
                     <a className="nav-link" href="#"><NavLink to="/products">Products</NavLink></a>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="#"><NavLink to="/cart">Cart</NavLink></a>
+                    <a className="nav-link" href="#"><NavLink to="/cart">Cart ({this.props.totalQuantity})</NavLink></a>
                     </li>
-                    {/* <li className="nav-item">
-                    <a className="nav-link" href="#"><NavLink to="/product-view/1">Product View</NavLink></a>
-                    </li> */}
                 </ul>
                 </nav>
                 <div className="routesview">
@@ -61,4 +44,13 @@ class RoutesComponents extends React.Component {
     }
 }
 
-export default RoutesComponents;
+
+const mapStatesToProps = (state) => ({
+    totalQuantity : state.cartList.totalQuantity
+});
+
+const mapDispatchToProps = {
+
+};
+
+export default connect(mapStatesToProps, mapDispatchToProps)(RoutesComponents);
