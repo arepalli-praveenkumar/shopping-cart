@@ -28,7 +28,7 @@ class RoutesComponents extends React.Component {
                     <a className="nav-link" href="javascript:void()"><NavLink to="/products">Products</NavLink></a>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="javascript:void()"><NavLink to="/my-profile">My Profile</NavLink></a>
+                    <a className="nav-link" href="javascript:void()"><NavLink to="/my-profile/user-profile">My Profile</NavLink></a>
                     </li>
                     <li className="nav-item">
                     <a className="nav-link" href="javascript:void()"><NavLink to="/cart">Cart ({this.props.totalQuantity})</NavLink></a>

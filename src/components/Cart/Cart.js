@@ -12,12 +12,12 @@ class CartComponent extends React.Component {
     render () {
         return (
             
-        <div class="container">
-            <div class="row">
+        <div className="container">
+            <div className="row">
             <div>Grand Total & Quantity : {this.props.grandTotal} & {this.props.totalQuantity}</div><br/>
             
-                <div class="col-12">
-                    <table class="table table-image">
+                <div className="col-12">
+                    <table className="table table-image">
                     <thead>
                         <tr>
                         <th scope="col">Product ID</th>
@@ -34,8 +34,8 @@ class CartComponent extends React.Component {
                             this.props.selectedItems.map(item => {
                             return (<tr>
                                 <td scope="row">{item.productID}</td>
-                                <td class="w-25">
-                                    <img src={item.imgUrl} class="img-fluid cart-image-width img-thumbnail" alt={item.name}/>
+                                <td className="w-25">
+                                    <img src={item.imgUrl} className="img-fluid cart-image-width img-thumbnail" alt={item.name}/>
                                 </td>
                                 <td>{item.name}</td>
                                 <td>{item.quantity}</td>

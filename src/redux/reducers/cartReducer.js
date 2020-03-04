@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
             let inCartItem = state.selectedItems.find(item => item.productID === currentProduct.productID)
 
             if (inCartItem) {
-                inCartItem.quantity +=1; // inCartItem.quantity + 1;
+                inCartItem.quantity +=1; 
                 inCartItem.itemTotalPrice = (inCartItem.quantity)*(inCartItem.price);
                 let grandTotal = state.grandTotal + inCartItem.price;
                 let totalQuantity = state.totalQuantity + 1
@@ -38,14 +38,12 @@ export default (state = initialState, action) => {
             let inCartItemCurrent = state.selectedItems.find(item => item.productID === action.productID);
             inCartItemCurrent.quantity = parseInt(action.newQuantity);
             inCartItemCurrent.itemTotalPrice = inCartItemCurrent.quantity*inCartItemCurrent.price;
-            //let grandTotal = state.grandTotal + currentProduct.price;
             let grandTotal = state.selectedItems.reduce((total, each) => {
                 return total+parseInt(each.itemTotalPrice)
             },0)
             let totalQuantity = state.selectedItems.reduce((total, each)=>{
                 return total + parseInt(each.quantity)
             },0)
-            //let totalQuantity = state.totalQuantity + parseInt(action.newQuantity)
         return {
             ...state,
             totalQuantity:totalQuantity,
