@@ -42,7 +42,10 @@ export default (state = initialState, action) => {
             let grandTotal = state.selectedItems.reduce((total, each) => {
                 return total+parseInt(each.itemTotalPrice)
             },0)
-            let totalQuantity = state.totalQuantity + parseInt(action.newQuantity)
+            let totalQuantity = state.selectedItems.reduce((total, each)=>{
+                return total + parseInt(each.quantity)
+            },0)
+            //let totalQuantity = state.totalQuantity + parseInt(action.newQuantity)
         return {
             ...state,
             totalQuantity:totalQuantity,

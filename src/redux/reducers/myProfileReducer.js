@@ -1,12 +1,8 @@
-import prods from "../mocks/Products.json";
-
-const initialState = prods;
+const initialState = {};
 export default (state = initialState, action) => {
     console.log(action)
     switch (action.type) {
-        case  "GET_PRODUCTS_LIST" :
-            return state;
-        case "GET_PRODUCT_BY_ID" :
+        case  "SAVE_PROFILE" :
             return state;
         default :
         return state;

@@ -10,7 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeComponent from "../components/Home/HomeComponent";
 import ProductsComponent from "../components/Products/Products";
 import CartComponent from "../components/Cart/Cart"
-import ProductViewComponent from "../components/ProductViewComponent/ProductViewComponent"
+import ProductViewComponent from "../components/ProductViewComponent/ProductViewComponent";
+import MyProfile from "../components/MyProfile/MyProfile"
 //import './routes.css'
 
 class RoutesComponents extends React.Component {
@@ -21,13 +22,16 @@ class RoutesComponents extends React.Component {
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                    <a className="nav-link" href="#"><NavLink to="/">Home</NavLink></a>
+                    <a className="nav-link" href="javascript:void()"><NavLink to="/">Home</NavLink></a>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="#"><NavLink to="/products">Products</NavLink></a>
+                    <a className="nav-link" href="javascript:void()"><NavLink to="/products">Products</NavLink></a>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="#"><NavLink to="/cart">Cart ({this.props.totalQuantity})</NavLink></a>
+                    <a className="nav-link" href="javascript:void()"><NavLink to="/my-profile">My Profile</NavLink></a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link" href="javascript:void()"><NavLink to="/cart">Cart ({this.props.totalQuantity})</NavLink></a>
                     </li>
                 </ul>
                 </nav>
@@ -35,6 +39,7 @@ class RoutesComponents extends React.Component {
                     <Switch>
                         <Route path="/cart" component={CartComponent}></Route>
                         <Route path="/products" component={ProductsComponent}></Route>
+                        <Route path="/my-profile" component={MyProfile}></Route>
                         <Route exact path="/product-view/:productId" component={ProductViewComponent}></Route>
                         <Route path="/" component={HomeComponent}></Route>
                     </Switch>
