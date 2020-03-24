@@ -19,7 +19,8 @@ class RoutesComponents extends React.Component {
 
     render() {
         return (
-            <Router>
+            
+            <Router basename={process.env.PUBLIC_URL}>
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
@@ -50,6 +51,7 @@ class RoutesComponents extends React.Component {
                     </Switch>
                 </div>
             </Router>
+                
         )
     }
 }
