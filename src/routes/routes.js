@@ -18,13 +18,16 @@ import MyProfile from "../components/MyProfile/MyProfile"
 class RoutesComponents extends React.Component {
 
     render() {
+
+        console.log(process.env.PUBLIC_URL)
+
         return (
             
             <Router basename={process.env.PUBLIC_URL}> 
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                    <a className="nav-link" href="javascript:void()"><NavLink to="/">Home</NavLink></a>
+                    <a className="nav-link" href="javascript:void()"><NavLink to="/">Home *{process.env.PUBLIC_URL}*</NavLink></a>
                     </li>
                     <li className="nav-item active">
                     <a className="nav-link" href="javascript:void()"><NavLink to="/login">Login</NavLink></a>
