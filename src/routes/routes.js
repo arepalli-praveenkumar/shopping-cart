@@ -49,8 +49,8 @@ class RoutesComponents extends React.Component {
                         <Route path="/products" component={ProductsComponent}></Route>
                         <Route path="/my-profile" component={MyProfile}></Route>
                         <Route path="/login" component={LoginComponent}></Route>
-                        <Route exact path="/product-view/:productId" component={ProductViewComponent}></Route>
-                        <Route exact path="/" component={HomeComponent}></Route>
+                        <Route path="/product-view/:productId" component={ProductViewComponent}></Route>
+                        <Route path="/" component={HomeComponent}></Route>
                     </Switch>
                 </div>
             </Router>

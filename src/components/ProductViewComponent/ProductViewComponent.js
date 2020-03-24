@@ -17,7 +17,7 @@ class ProductViewComponent extends React.Component {
 
         let current;
         productsList.map(i => {
-            if (i.id == prodId) {
+            if (i.productID == prodId) {
                 current = i;
             }
             
@@ -39,7 +39,7 @@ class ProductViewComponent extends React.Component {
                         <div className="card-text" >Brand : {current.brand}</div>
                         <div className="card-text" >Made in : {current.make}</div>
                         <div className="card-text" >Remarks : {current.remarks}</div>
-                        <button onClick={()=>this.props.updateQuantity()}>Update</button>
+                        {/* <button onClick={()=>this.props.updateQuantity()}>Update</button> */}
                         <div className="btn btn-primary" onClick={()=>this.props.addItemToCart(current)}>Add to Cart</div>
                     </div>
                 </div>

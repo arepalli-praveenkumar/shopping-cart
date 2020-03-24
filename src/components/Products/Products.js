@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from "react-redux";
 import { addItemToCart } from "../../redux/actionTypes/cartActionTypes";
+import { NavLink } from "react-router-dom";
 // import xx from "./Products.json";
 
 // import w from "./images/w.jpg"
@@ -17,6 +18,7 @@ class ProductsComponent extends React.Component {
         super(props);
     }
 
+    //onClick={()=>this.productDetailedView(prod.id)}
     productDetailedView = (id) => {
         console.log(id)
         this.props.history.push(`/product-view/${id}`)
@@ -37,9 +39,10 @@ class ProductsComponent extends React.Component {
                             return (
                                 <div key={index}>
                                     <div className="card image-width">
-                                        <div onClick={()=>this.productDetailedView(prod.id)}>
+                                    <NavLink to={`/product-view/${prod.productID}`}><div >
                                             <img className="card-img-top" src={prod.imgUrl} alt="Shoes"/>
                                         </div>
+                                        </NavLink>
                         
                                         <div className="card-body">
                                             <h5 className="card-title">{prod.name}</h5>
