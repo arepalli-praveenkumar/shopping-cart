@@ -20,7 +20,7 @@ class RoutesComponents extends React.Component {
     render() {
         return (
             
-            <Router basename='/'> 
+            <Router basename={process.env.PUBLIC_URL}> 
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
@@ -47,7 +47,7 @@ class RoutesComponents extends React.Component {
                         <Route path="/my-profile" component={MyProfile}></Route>
                         <Route path="/login" component={LoginComponent}></Route>
                         <Route exact path="/product-view/:productId" component={ProductViewComponent}></Route>
-                        <Route path="/" component={HomeComponent}></Route>
+                        <Route exact path="/" component={HomeComponent}></Route>
                     </Switch>
                 </div>
             </Router>
