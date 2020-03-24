@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeComponent from "../components/Home/HomeComponent";
 import ProductsComponent from "../components/Products/Products";
-import CartComponent from "../components/Cart/Cart"
+import CartComponent from "../components/Cart/Cart";
+import LoginComponent from '../components/LoginComponent/LoginComponent';
 import ProductViewComponent from "../components/ProductViewComponent/ProductViewComponent";
 import MyProfile from "../components/MyProfile/MyProfile"
 //import './routes.css'
@@ -23,6 +24,9 @@ class RoutesComponents extends React.Component {
                 <ul className="navbar-nav">
                     <li className="nav-item active">
                     <a className="nav-link" href="javascript:void()"><NavLink to="/">Home</NavLink></a>
+                    </li>
+                    <li className="nav-item active">
+                    <a className="nav-link" href="javascript:void()"><NavLink to="/login">Login</NavLink></a>
                     </li>
                     <li className="nav-item">
                     <a className="nav-link" href="javascript:void()"><NavLink to="/products">Products</NavLink></a>
@@ -40,6 +44,7 @@ class RoutesComponents extends React.Component {
                         <Route path="/cart" component={CartComponent}></Route>
                         <Route path="/products" component={ProductsComponent}></Route>
                         <Route path="/my-profile" component={MyProfile}></Route>
+                        <Route path="/login" component={LoginComponent}></Route>
                         <Route exact path="/product-view/:productId" component={ProductViewComponent}></Route>
                         <Route path="/" component={HomeComponent}></Route>
                     </Switch>
