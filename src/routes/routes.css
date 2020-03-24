@@ -1,0 +1,14 @@
+.links {
+    display: flex;
+    justify-content: space-around;
+    min-height: 50px;
+}
+
+.link {
+    margin: 10px;
+}
+
+.routesview {
+    height: auto;
+    margin-top: 10px;
+}
