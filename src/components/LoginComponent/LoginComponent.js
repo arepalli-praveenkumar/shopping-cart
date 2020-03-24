@@ -63,7 +63,7 @@ class LoginComponent extends React.Component {
 
           <div className="col-sm-12 btn btn-info">
 
-            Login With Google Using ReactJS - Praveenkumar
+            Login With Google Using ReactJS
 
             </div>
 
