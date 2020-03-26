@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateQuantity } from "../../redux/actionTypes/cartActionTypes";
+import { NavLink } from "react-router-dom";
 import "./Cart.css"
 class CartComponent extends React.Component {
 
@@ -12,8 +13,8 @@ class CartComponent extends React.Component {
     render () {
         return (
             
-        <div className="container">
-            <div className="row">
+        <div className="container cart-container">
+            <div className="">
             <div>Grand Total & Quantity : {this.props.grandTotal} & {this.props.totalQuantity}</div><br/>
             
                 <div className="col-12">
@@ -35,14 +36,17 @@ class CartComponent extends React.Component {
                             return (<tr>
                                 <td scope="row">{item.productID}</td>
                                 <td className="w-25">
-                                    <img src={item.imgUrl} className="img-fluid cart-image-width img-thumbnail" alt={item.name}/>
+                                    <NavLink to={`/product-view/${item.productID}`}>
+                                     <img src={item.imgUrl} className="img-fluid cart-image-width img-thumbnail"
+                                      alt={item.name}/>
+                                    </NavLink>
                                 </td>
                                 <td>{item.name}</td>
                                 <td>{item.quantity}</td>
                                 <td> 
                                     <input type="text" onChange={(event)=>this.updateQnty(event, item.productID)}/>
                                 </td>
-                                <td>{item.price}</td>
+                                <td>{item.price} - {item.currency}</td>
                                 <td>{item.itemTotalPrice}</td>
                             </tr>)
                             })

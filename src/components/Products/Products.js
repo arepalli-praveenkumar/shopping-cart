@@ -32,30 +32,26 @@ class ProductsComponent extends React.Component {
         console.log(this.props);
         const prodList = this.props.productsList
         return (
-            <div className="container">
-                <div className="row text-center text-lg-left">
-                    {
-                        prodList.map((prod, index) => {
-                            return (
-                                <div key={index}>
-                                    <div className="card image-width">
-                                    <NavLink to={`/product-view/${prod.productID}`}><div >
-                                            <img className="card-img-top" src={prod.imgUrl} alt="Shoes"/>
-                                        </div>
-                                        </NavLink>
-                        
-                                        <div className="card-body">
-                                            <h5 className="card-title">{prod.name}</h5>
-                                            <div className="card-text" >{prod.price}</div>
-                                            <div className="btn btn-primary" onClick={()=>this.props.addItemToCart(prod)}>Add to Cart</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                )
-                        })
-                    }     
-                </div>
-            </div>
+            <div class="container page-top">
+            <div class="row">
+                {
+                    prodList.map((prod, index) => {
+                        return (
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb" key={index}>
+                        <NavLink to={`/product-view/${prod.productID}`}>
+                        <img  src={prod.imgUrl} class="zoom img-fluid "  alt=""/>
+                        </NavLink>
+                        <div className="card-body product-card-body">
+                            <h5 className="card-title">{prod.name}</h5>
+                        <div className="card-text" >{prod.price} - {prod.currency}</div>
+                            <div className="btn btn-primary" onClick={()=>this.props.addItemToCart(prod)}>Add to Cart</div>
+                        </div>
+                        </div>
+                        )
+                    })
+                }   
+           </div>
+           </div>
         )
     }
 }

@@ -33,7 +33,7 @@ class ProductViewComponent extends React.Component {
                         <img className="card-img-top" src={current.imgUrl} alt="Shoes"/>
                     </div>
     
-                    <div className="card-body">
+                    <div className="card-body product-card-body">
                         <h5 className="card-title">{current.name}</h5>
                         <div className="card-text">Price : {current.price} {current.currency}</div>
                         <div className="card-text" >Brand : {current.brand}</div>

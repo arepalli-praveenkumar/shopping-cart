@@ -1,3 +1,7 @@
+.product-card-body {
+    background-color: wheat;
+}
+
 .card-layout {
     display:  flex;
     align-items: stretch;
