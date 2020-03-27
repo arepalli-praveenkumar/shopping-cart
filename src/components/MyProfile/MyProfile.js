@@ -11,7 +11,7 @@ import MyOrders from "../MyOrders/MyOrders"
 function MyProfile() {
     return (
         <div>
-            <div className="container">
+            <div className="container cart-container">
 	<div className="row">
 		<div className="col-md-3 ">
 		     <div className="list-group ">

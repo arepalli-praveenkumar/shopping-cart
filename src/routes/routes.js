@@ -44,7 +44,7 @@ class RoutesComponents extends React.Component {
                         :
                         <div className="links">
                         <li className="nav-item active">
-                            <NavLink to="/" className="nav-link">Home *{process.env.PUBLIC_URL}*</NavLink> 
+                            <NavLink to="/home" className="nav-link">Home *{process.env.PUBLIC_URL}*</NavLink> 
                         </li>
                         <li className="nav-item">
                             <NavLink to="/products" className="nav-link">Products</NavLink> 
