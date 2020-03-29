@@ -8,6 +8,13 @@ import { BE_BASEURL } from "../../constants";
 import { login } from "../../redux/actionTypes/authActionTypes";
 
 import './login.css';
+
+//axios.defaults.baseURL = 'https://api.example.com';
+//axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+//axios.defaults.headers.common['Access-Control-Allow-Method'] = 'DELETE, POST, GET, OPTIONS';
+//axios.defaults.headers.common['Access-Control-Allow-Headers'] = '"Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"';
+
+//axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 class LoginComponent extends React.Component {
 
   constructor(props) {
@@ -66,8 +73,13 @@ class LoginComponent extends React.Component {
 
     authenticateUser = (event) => {
 
+      const INSTRUCTOR = "user";
+      const PASSWORD = "21d607ec-d5b0-4ad7-8c58-5aa281e6a5ac";
       event.preventDefault();
-        axios.post(BE_BASEURL+"/user/login", this.state.loginForm)
+        axios.post(BE_BASEURL+"/user/login", this.state.loginForm,
+        {
+          //headers : {authorization :"Basic "+ window.btoa(INSTRUCTOR + ":" + PASSWORD)}
+        })
         .then((res)=> {
             console.log(res);
             if (res.data === true) {

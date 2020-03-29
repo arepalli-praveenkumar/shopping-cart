@@ -42,7 +42,7 @@ class CartComponent extends React.Component {
                                     </NavLink>
                                 </td>
                                 <td>{item.name}</td>
-                                <td>{item.quantity}</td>
+                                <td><button>+</button>{item.quantity}<button>-</button></td>
                                 <td> 
                                     <input type="text" onChange={(event)=>this.updateQnty(event, item.productID)}/>
                                 </td>
@@ -55,6 +55,7 @@ class CartComponent extends React.Component {
                     </table>  
                     <div>Grand Total : {this.props.grandTotal}</div> 
                     <div>Grand Quantity : {this.props.totalQuantity}</div>
+                    <input type="submit" value="Checkout" class="btn float-right login_btn" />
                 </div>
             </div>
         </div>
