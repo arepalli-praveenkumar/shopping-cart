@@ -21,7 +21,7 @@ class LoginComponent extends React.Component {
     super(props);
     this.state = {
         loginForm : {
-            emailID : "",
+          usernameOrEmail : "",
             password : ""
     }
     }
@@ -45,7 +45,7 @@ class LoginComponent extends React.Component {
         
             console.log(googleresponse);
             this.props.history.push('/products')
-            //debugger;
+            
         
             // axios.post('http://localhost:60200/Api/Login/SocialmediaData', googleresponse)
         
@@ -72,17 +72,14 @@ class LoginComponent extends React.Component {
     }
 
     authenticateUser = (event) => {
-
-      const INSTRUCTOR = "user";
-      const PASSWORD = "21d607ec-d5b0-4ad7-8c58-5aa281e6a5ac";
       event.preventDefault();
-        axios.post(BE_BASEURL+"/user/login", this.state.loginForm,
+        axios.post(BE_BASEURL+"/api/auth/signin", this.state.loginForm,
         {
           //headers : {authorization :"Basic "+ window.btoa(INSTRUCTOR + ":" + PASSWORD)}
         })
         .then((res)=> {
             console.log(res);
-            if (res.data === true) {
+            if (res.data.accessToken) {
                 //this.props.history.push("/products");
                 this.props.login(res.data);
                 this.props.history.push('/products')
@@ -159,7 +156,7 @@ class LoginComponent extends React.Component {
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" name="emailID" class="form-control" placeholder="username"  onChange={this.inputHandler}/>
+						<input type="text" name="usernameOrEmail" class="form-control" placeholder="username"  onChange={this.inputHandler}/>
 						
 					</div>
 					<div class="input-group form-group">

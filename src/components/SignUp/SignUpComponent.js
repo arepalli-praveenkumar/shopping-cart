@@ -11,8 +11,8 @@ class SignUpComponent extends React.Component {
         this.state = {
             singUpForm : {
                 name : "",
-                emailID : "",
-                phoneNo : "",
+                email : "",
+                username : "",
                 password : ""
         }
         }
@@ -21,13 +21,13 @@ class SignUpComponent extends React.Component {
     createAccount = (event) => {
 
         event.preventDefault();
-        axios.post(BE_BASEURL+"/user/signUpUser", this.state.singUpForm)
+        axios.post(BE_BASEURL+"/api/auth/signup", this.state.singUpForm)
         .then((res)=> {
             console.log(res);
-            if (res.data === "REG_SUCC") {
+            if (res.data.success === true) {
                 this.props.history.push("/login")
-            } else {
-                console.log("Account exist");
+            } else if (res.data.success === false) {
+                console.log(res.data.message);
             }
         })
         .catch((err) => {
@@ -68,13 +68,13 @@ class SignUpComponent extends React.Component {
     	<div className="input-group-prepend">
 		    <span className="input-group-text"> <i className="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="emailID" className="form-control" onChange={this.inputHandler} placeholder="Email address" type="email"/>
+        <input name="email" className="form-control" onChange={this.inputHandler} placeholder="Email address" type="email"/>
     </div> 
     <div className="form-group input-group">
     	<div className="input-group-prepend">
 		    <span className="input-group-text"> <i className="fa fa-phone"></i> </span>
 		</div>
-    	<input name="phoneNo" className="form-control" onChange={this.inputHandler} placeholder="Phone number" type="text"/>
+    	<input name="username" className="form-control" onChange={this.inputHandler} placeholder="Phone number" type="text"/>
     </div> 
     
     <div className="form-group input-group">
