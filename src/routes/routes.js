@@ -16,14 +16,25 @@ import MyProfile from "../components/MyProfile/MyProfile";
 import SignUpComponent from "../components/SignUp/SignUpComponent";
 import { logout } from "../redux/actionTypes/authActionTypes";
 
+import shoppingCartImage from '../images/shopping-cart.jfif';
 import './routes.css'
 
 class RoutesComponents extends React.Component {
+
+    logoutSession = () => {
+        sessionStorage.removeItem("token");
+        this.props.logout(null);
+        //this.props.history.push("/signup");
+        //this.props.history.push('/signup')
+    }
 
 
     render() {
 
         console.log(process.env.PUBLIC_URL);
+        
+        const authToken = sessionStorage.getItem("token");
+        console.log(authToken);
         let basename = process.env.PUBLIC_URL;
 
         return (
@@ -32,7 +43,7 @@ class RoutesComponents extends React.Component {
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul className="navbar-nav">
                     {
-                        !this.props.isAuth ? 
+                        !authToken ? 
                         <div className="links">
                         <li className="nav-item active">
                             <NavLink to="/login" className="nav-link">Login</NavLink> 
@@ -46,6 +57,9 @@ class RoutesComponents extends React.Component {
                         <li className="nav-item active">
                             <NavLink to="/home" className="nav-link">Home *{process.env.PUBLIC_URL}*</NavLink> 
                         </li>
+                        <li className="nav-item active">
+                            <NavLink to="/home" className="nav-link"><img className="logo" src={shoppingCartImage} /></NavLink> 
+                        </li>
                         <li className="nav-item">
                             <NavLink to="/products" className="nav-link">Products</NavLink> 
                         </li>
@@ -55,7 +69,7 @@ class RoutesComponents extends React.Component {
                         <li className="nav-item">
                             <NavLink to="/cart" className="nav-link">Cart ({this.props.totalQuantity})</NavLink> 
                         </li>
-                        <input type="submit" value="Logout" onClick={()=>this.props.logout(false)} class="btn float-right login_btn" />
+                           <input type="submit" class="btn float-right login_btn" value="Logout" onClick={this.logoutSession} class="btn float-right login_btn" />
                         </div>
                     }
                 
@@ -63,7 +77,7 @@ class RoutesComponents extends React.Component {
                 </nav>
                 <div className="routesview">
                     {
-                        this.props.isAuth ? 
+                        authToken ? 
                         <Switch>
                         <Route path="/cart" component={CartComponent}></Route>
                         <Route path="/products" component={ProductsComponent}></Route>

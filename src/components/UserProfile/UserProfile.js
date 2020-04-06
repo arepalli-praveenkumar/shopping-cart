@@ -1,80 +1,126 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { saveUserProfile } from "../../redux/actionTypes/userProfileActionTypes"
+import axios from 'axios';
+import { BE_BASEURL } from "../../constants";
+import { saveUserProfile, getUserInfo } from "../../redux/actionTypes/userProfileActionTypes";
+import "./UserProfile.css"
 
-function UserProfile(props) {
+class UserProfile extends React.Component {
 
-    let userInfo = {}
-const onChangeProfileInfo = (event) => {
-    userInfo[event.currentTarget.name] = event.target.value;
-    console.log(userInfo)
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInfo : {
+      phoneNo : "",
+      name : "",
+      email : "",
+      username : ""
+      },
+      token : ""
+    }
+  }
+
+  inputHandler = (event) => {
+    let fieldName =event.currentTarget.name;
+    let fieldValue = event.target.value;
+    console.log(fieldName, fieldValue);
+    this.setState((state) => {
+        state.userInfo[fieldName] = fieldValue;
+    })
+  }
+
+  updateProfile = (event) => {
+    let newProfile = {
+      name : "Arepalli Praveenkumar",
+      phoneNo : 784512369,
+      userID : 23
+    };
+    event.preventDefault();
+    this.props.saveUserProfile(newProfile);
+    console.log(this.state.userInfo, this.state.token);
+  }
+
+shouldComponentUpdate() {
+  console.log(this.state)
+  return true;
 }
 
-    return (
-<div className="card">
-		        <div className="card-body">
-		            <div className="row">
-		                <div className="col-md-12">
-		                    <h4>Your Profile</h4>
-		                    <hr/>
-		                </div>
-		            </div>
-		            <div className="row">
-		                <div className="col-md-12">
-		                    <div>
-                              <div className="form-group row">
-                                <label for="name" className="col-4 col-form-label">First Name</label> 
-                                <div className="col-8">
-                                  <input id="name" name="firstname" 
-                                  placeholder="First Name" className="form-control here" 
-                                  type="text" onChange={(event)=>onChangeProfileInfo(event)}/>
-                                </div>
-                              </div>
-                              <div className="form-group row">
-                                <label for="lastname" className="col-4 col-form-label">Last Name*</label> 
-                                <div className="col-8">
-                                  <input id="lastname" name="lastname" placeholder="Last Name" 
-                                  className="form-control here" type="text"
-                                  onChange={(event)=>onChangeProfileInfo(event)}/>
-                                </div>
-                              </div>
-                              <div className="form-group row">
-                                <label for="text" className="col-4 col-form-label">Phone Number*</label> 
-                                <div className="col-8">
-                                  <input id="text" name="text" placeholder="Phone Number" 
-                                  className="form-control here" required="required" type="text"
-                                  onChange={(event)=>onChangeProfileInfo(event)}/>
-                                </div>
-                              </div>
-                              <div className="form-group row">
-                                <label for="email" className="col-4 col-form-label">Email*</label> 
-                                <div className="col-8">
-                                  <input id="email" name="email" placeholder="Email" 
-                                  className="form-control here" required="required" type="text"
-                                  onChange={(event)=>onChangeProfileInfo(event)}/>
-                                </div>
-                              </div> 
-                              <div className="form-group row">
-                                <div className="offset-4 col-8">
-                                  <button name="submit" className="btn btn-primary"
-                                  onClick={()=>props.saveUserProfile(userInfo)}>Update My Profile</button>
-                                </div>
-                              </div>
-                            </div>
-		                </div>
-		            </div>
-		            
-		        </div>
-		    </div>
-    )
+componentDidMount() {
+  const re = this.props.getUserInfo();
+  console.log(re)
+}
+
+
+render() {
+
+  const { name, email, username, phoneNo }= this.props.userInfy;
+  
+   const profile = (!this.props.loading) ? 
+   <div className="row">
+                    <div className="form-group input-group">
+                      <div className="input-group-prepend">
+                          <span className="input-group-text"> <i className="fa fa-user"></i> </span>
+                      </div>
+                          <input name="name" value={name} 
+                          className="form-control" onChange={this.inputHandler} 
+                          placeholder="full name" type="text"/>
+                      </div> 
+                      {/* <div className="form-group input-group">
+                        <div className="input-group-prepend">
+                          <span className="input-group-text"> <i className="fa fa-envelope"></i> </span>
+                      </div>
+                          <input name="email" value={email} className="form-control" onChange={this.inputHandler} placeholder="email" type="email"/>
+                      </div> 
+                      <div className="form-group input-group">
+                        <div className="input-group-prepend">
+                          <span className="input-group-text"> <i className="fa fa-phone"></i> </span>
+                      </div>
+                        <input name="username" value={username} className="form-control" onChange={this.inputHandler} placeholder="username" type="text"/>
+                      </div>  */}
+                      
+                      <div className="form-group input-group">
+                        <div className="input-group-prepend">
+                          <span className="input-group-text"> <i className="fa fa-lock"></i> </span>
+                      </div>
+                          <input name="phoneNo" value={phoneNo} className="form-control" onChange={this.inputHandler} placeholder="phone no" type="input"/>
+                      </div>                                   
+                      <div className="form-group">
+                          <button className="btn btn-primary btn-block" onClick={this.updateProfile}> Update Profile </button>
+                      </div>
+                    </div>
+   :  <div>...Loading</div>
+
+  return (
+    <div className="card user-profile">
+                <div className="card-body">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h4>Your Profile</h4>
+                            <hr/>
+                        </div>
+                    </div>
+                    
+                    {profile}
+                </div>
+            </div>
+        )
+
+}
+    
 }
 
 const mapStatesToProps = (state) => ({
-    
+   loading : state.loadingReducer.loading,
+   userInfy : state.userProfile.userInfo
 });
 
-const mapDispatchToProps = {
-    saveUserProfile
+const mapDispatchToProps = (dispatch) => {
+
+  console.log(dispatch);
+  return {
+    saveUserProfile : (data) => dispatch(saveUserProfile(data)),
+    getUserInfo : () => dispatch(getUserInfo())
+  }
 };
 
 export default connect(mapStatesToProps,mapDispatchToProps)(UserProfile);

@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateQuantity } from "../../redux/actionTypes/cartActionTypes";
+import { 
+    updateQuantity, 
+    decrementQuantity, 
+    increamentQuantity, 
+    orderItems } from "../../redux/actionTypes/cartActionTypes";
 import { NavLink } from "react-router-dom";
 import "./Cart.css"
 class CartComponent extends React.Component {
@@ -10,6 +14,36 @@ class CartComponent extends React.Component {
         let newQuantity = event.target.value
         this.props.updateQuantity(newQuantity, productID)
     }
+
+    incrementQnty = (item) => {
+        if (item.quantity >= 0) {
+            this.props.increamentQuantity(item.productID);
+        } else {
+            return null;
+        }
+        
+    }
+
+    decrementQnty = (item) => {
+        if (item.quantity === 0) {
+            return null;
+        } else {
+            this.props.decrementQuantity(item.productID);
+        }
+        //this.props.decrementQuantity(item.productID);
+    }
+
+    ordetItems = () => {
+        let buyProducts = {
+            userID : 23,
+            products : this.props.selectedItems,
+            grandTotal : this.props.grandTotal,
+            totalQnty: this.props.totalQuantity
+
+        };
+        this.props.orderItems(buyProducts);
+    }
+
     render () {
         return (
             
@@ -25,7 +59,7 @@ class CartComponent extends React.Component {
                         <th scope="col">Image</th>
                         <th scope="col">Product Name</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">New Quantity</th>
+                        {/* <th scope="col">New Quantity</th> */}
                         <th scope="col">Price/Each</th>
                         <th scope="col">Total</th>
                         </tr>
@@ -42,10 +76,13 @@ class CartComponent extends React.Component {
                                     </NavLink>
                                 </td>
                                 <td>{item.name}</td>
-                                <td><button>+</button>{item.quantity}<button>-</button></td>
-                                <td> 
-                                    <input type="text" onChange={(event)=>this.updateQnty(event, item.productID)}/>
+                                <td>
+                                    <button onClick={()=>this.incrementQnty(item)}>+</button>{item.quantity}
+                                    <button onClick={()=>this.decrementQnty(item)}>-</button>
                                 </td>
+                                {/* <td> 
+                                    <input type="text" onChange={(event)=>this.updateQnty(event, item.productID)}/>
+                                </td> */}
                                 <td>{item.price} - {item.currency}</td>
                                 <td>{item.itemTotalPrice}</td>
                             </tr>)
@@ -55,7 +92,8 @@ class CartComponent extends React.Component {
                     </table>  
                     <div>Grand Total : {this.props.grandTotal}</div> 
                     <div>Grand Quantity : {this.props.totalQuantity}</div>
-                    <input type="submit" value="Checkout" class="btn float-right login_btn" />
+                    <input type="submit" value="Checkout" class="btn float-right login_btn" 
+                    onClick={this.ordetItems}/>
                 </div>
             </div>
         </div>
@@ -70,8 +108,14 @@ const mapStatesToProps = (state) => ({
     totalQuantity: state.cartList.totalQuantity
 });
 
-const mapDispatchToProps = {
-    updateQuantity
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateQuantity : () => dispatch(updateQuantity()),
+        decrementQuantity : (id) => dispatch(decrementQuantity(id)),
+        increamentQuantity : (id) => dispatch(increamentQuantity(id)),
+        orderItems : (data) => dispatch(orderItems(data))
+    }
+    
 };
 
 export default connect(mapStatesToProps,mapDispatchToProps)(CartComponent);

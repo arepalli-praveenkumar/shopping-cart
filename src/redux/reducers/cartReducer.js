@@ -49,6 +49,30 @@ export default (state = initialState, action) => {
             totalQuantity:totalQuantity,
             grandTotal:grandTotal
         }
+
+        case "INCR_QUANTITY" : 
+        let incCartItemCurrent = state.selectedItems.find(item => item.productID === action.productID);
+        console.log(incCartItemCurrent)
+        incCartItemCurrent.quantity =parseInt(incCartItemCurrent.quantity+1);
+        incCartItemCurrent.itemTotalPrice = incCartItemCurrent.quantity * incCartItemCurrent.price;
+        let iGrandTotal = state.grandTotal + incCartItemCurrent.price;
+        //let totalQuantity = state.totalQuantity + 1;
+        return {
+            ...state,
+            totalQuantity:state.totalQuantity + 1,
+            grandTotal: iGrandTotal
+        }
+        case "DECR_QUANTITY" : 
+        let decCartItemCurrent = state.selectedItems.find(item => item.productID === action.productID);
+        decCartItemCurrent.quantity =parseInt(decCartItemCurrent.quantity-1);
+        decCartItemCurrent.itemTotalPrice = decCartItemCurrent.quantity * decCartItemCurrent.price;
+        let dGrandTotal = state.grandTotal - decCartItemCurrent.price;
+        // let totalQuantity = state.totalQuantity + 1;
+        return {
+            ...state,
+            totalQuantity:state.totalQuantity - 1,
+            grandTotal:dGrandTotal
+        }
         
         default :
         return state;

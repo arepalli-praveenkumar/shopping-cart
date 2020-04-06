@@ -8,6 +8,10 @@
     margin: 10px;
 }
 
+.logo {
+    width: 40px;
+}
+
 .routesview {
     height: auto;
     background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');

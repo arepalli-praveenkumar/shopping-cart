@@ -22,7 +22,7 @@ class LoginComponent extends React.Component {
     this.state = {
         loginForm : {
           usernameOrEmail : "",
-            password : ""
+          password : ""
     }
     }
 }
@@ -80,8 +80,9 @@ class LoginComponent extends React.Component {
         .then((res)=> {
             console.log(res);
             if (res.data.accessToken) {
-                //this.props.history.push("/products");
-                this.props.login(res.data);
+                // TODO more on session creation
+                sessionStorage.setItem("token",res.data.accessToken);
+                this.props.login(res.data.accessToken);
                 this.props.history.push('/products')
             } else {
                 alert("Login failed");
@@ -156,7 +157,7 @@ class LoginComponent extends React.Component {
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" name="usernameOrEmail" class="form-control" placeholder="username"  onChange={this.inputHandler}/>
+						<input type="text" name="usernameOrEmail" class="form-control" placeholder="Enter usernameOrEmail"  onChange={this.inputHandler}/>
 						
 					</div>
 					<div class="input-group form-group">

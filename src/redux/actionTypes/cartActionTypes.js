@@ -1,11 +1,67 @@
+import axios from 'axios';
+import { BE_BASEURL } from "../../constants";
+import { requestLoading, reqSucc, error } from "./loadingActionTypes";
 
-export const addItemToCart = (item) => ({
-    type : "ADD_ITEM_TO_CART",
-    payload : item
-})
 
-export const updateQuantity = (newQuantity,productID) => ({
+let token = sessionStorage.getItem("token");
+const AuthStr = 'Bearer '.concat(token);
+
+export function addItemToCart(item) {
+    return (dispatch) => {
+        dispatch({
+            type : "ADD_ITEM_TO_CART",
+            payload : item
+        })
+    }
+}
+
+export function updateQuantity(newQuantity,productID) {
+    return (dispatch) => {
+        dispatch({
             type: "UPDATE_QUANTITY",
             newQuantity,productID
-})
+        })
+    }       
+}
 
+export function decrementQuantity(productID) {
+    return (dispatch) => {
+        dispatch({
+            type: "DECR_QUANTITY",
+            productID
+        })
+    }
+    
+}
+
+export function increamentQuantity(productID) {
+    return (dispatch) => {
+        dispatch({
+            type: "INCR_QUANTITY",
+            productID
+        })
+    }
+    
+}
+
+export function orderItems(data) {
+    return (dispatch) => {
+
+    dispatch(requestLoading());
+    axios.post(BE_BASEURL+"/api/products/orderItems", data, 
+    {
+      headers : {
+        "Authorization" :AuthStr,
+        "Content-Type" : "application/json"
+      }
+    }).then( res => {
+      dispatch(reqSucc());
+    }).catch( err => {
+          console.log(err);
+          dispatch(error());
+          return err.data;
+    });
+
+
+    }
+}

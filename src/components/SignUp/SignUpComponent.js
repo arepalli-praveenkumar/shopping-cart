@@ -74,7 +74,7 @@ class SignUpComponent extends React.Component {
     	<div className="input-group-prepend">
 		    <span className="input-group-text"> <i className="fa fa-phone"></i> </span>
 		</div>
-    	<input name="username" className="form-control" onChange={this.inputHandler} placeholder="Phone number" type="text"/>
+    	<input name="username" className="form-control" onChange={this.inputHandler} placeholder="Enter username" type="text"/>
     </div> 
     
     <div className="form-group input-group">
