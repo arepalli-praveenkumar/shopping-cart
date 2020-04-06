@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/shopping-cart/static/css/main.212accb6.chunk.css",
-    "main.js": "/shopping-cart/static/js/main.0a0e6cf7.chunk.js",
-    "main.js.map": "/shopping-cart/static/js/main.0a0e6cf7.chunk.js.map",
+    "main.css": "/shopping-cart/static/css/main.d02d0b1c.chunk.css",
+    "main.js": "/shopping-cart/static/js/main.4334492b.chunk.js",
+    "main.js.map": "/shopping-cart/static/js/main.4334492b.chunk.js.map",
     "runtime-main.js": "/shopping-cart/static/js/runtime-main.bcdff60e.js",
     "runtime-main.js.map": "/shopping-cart/static/js/runtime-main.bcdff60e.js.map",
     "static/css/2.47e06e2e.chunk.css": "/shopping-cart/static/css/2.47e06e2e.chunk.css",
-    "static/js/2.068572d2.chunk.js": "/shopping-cart/static/js/2.068572d2.chunk.js",
-    "static/js/2.068572d2.chunk.js.map": "/shopping-cart/static/js/2.068572d2.chunk.js.map",
+    "static/js/2.ca02d68c.chunk.js": "/shopping-cart/static/js/2.ca02d68c.chunk.js",
+    "static/js/2.ca02d68c.chunk.js.map": "/shopping-cart/static/js/2.ca02d68c.chunk.js.map",
     "index.html": "/shopping-cart/index.html",
-    "precache-manifest.372316b4e5fe816008305b3fa000587e.js": "/shopping-cart/precache-manifest.372316b4e5fe816008305b3fa000587e.js",
+    "precache-manifest.0a2a989c955455004e3f198bfe2791fc.js": "/shopping-cart/precache-manifest.0a2a989c955455004e3f198bfe2791fc.js",
     "service-worker.js": "/shopping-cart/service-worker.js",
     "static/css/2.47e06e2e.chunk.css.map": "/shopping-cart/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.212accb6.chunk.css.map": "/shopping-cart/static/css/main.212accb6.chunk.css.map",
-    "static/js/2.068572d2.chunk.js.LICENSE.txt": "/shopping-cart/static/js/2.068572d2.chunk.js.LICENSE.txt"
+    "static/css/main.d02d0b1c.chunk.css.map": "/shopping-cart/static/css/main.d02d0b1c.chunk.css.map",
+    "static/js/2.ca02d68c.chunk.js.LICENSE.txt": "/shopping-cart/static/js/2.ca02d68c.chunk.js.LICENSE.txt",
+    "static/media/shopping-cart.jfif": "/shopping-cart/static/media/shopping-cart.b55d9130.jfif"
   },
   "entrypoints": [
     "static/js/runtime-main.bcdff60e.js",
     "static/css/2.47e06e2e.chunk.css",
-    "static/js/2.068572d2.chunk.js",
-    "static/css/main.212accb6.chunk.css",
-    "static/js/main.0a0e6cf7.chunk.js"
+    "static/js/2.ca02d68c.chunk.js",
+    "static/css/main.d02d0b1c.chunk.css",
+    "static/js/main.4334492b.chunk.js"
   ]
 }
