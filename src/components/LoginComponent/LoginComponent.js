@@ -82,6 +82,7 @@ class LoginComponent extends React.Component {
             if (res.data.accessToken) {
                 // TODO more on session creation
                 sessionStorage.setItem("token",res.data.accessToken);
+                sessionStorage.setItem("user",JSON.stringify(res.data.userPrincipal));
                 this.props.login(res.data.accessToken);
                 this.props.history.push('/products')
             } else {
