@@ -73,6 +73,13 @@ export default (state = initialState, action) => {
             totalQuantity:state.totalQuantity - 1,
             grandTotal:dGrandTotal
         }
+
+        case "CLEAR_CART" : 
+        return {
+            grandTotal : 0,
+            totalQuantity : 0,
+            selectedItems : []
+        }
         
         default :
         return state;

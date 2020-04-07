@@ -41,7 +41,15 @@ export function increamentQuantity(productID) {
             productID
         })
     }
-    
+}
+
+export function clearCart() {
+    return (dispatch) => {
+        dispatch({
+            type: "CLEAR_CART"
+        });
+        
+    }
 }
 
 export function orderItems(data) {
@@ -56,6 +64,7 @@ export function orderItems(data) {
       }
     }).then( res => {
       dispatch(reqSucc());
+      dispatch(clearCart());
     }).catch( err => {
           console.log(err);
           dispatch(error());

@@ -69,7 +69,14 @@ class RoutesComponents extends React.Component {
                         <li className="nav-item">
                             <NavLink to="/cart" className="nav-link">Cart ({this.props.totalQuantity})</NavLink> 
                         </li>
-                           <input type="submit" class="btn float-right login_btn" value="Logout" onClick={this.logoutSession} class="btn float-right login_btn" />
+                        <li className="nav-item">
+                        <input type="submit" className="btn float-right login_btn" value="Logout" 
+                        onClick={this.logoutSession} />
+                        </li>
+                        <li className="nav-item">
+                            <div className="float-right login _btn nav-link">Hello Praveen!</div>
+                        </li>
+                        
                         </div>
                     }
                 
