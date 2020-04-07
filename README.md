@@ -9,3 +9,10 @@ Steps to run project
 4. npm start (wait until it fully starts)
 
 now application is deployed at http://localhost:3000 
+
+Setup
+
+`npm i && npm start`
+
+
+
