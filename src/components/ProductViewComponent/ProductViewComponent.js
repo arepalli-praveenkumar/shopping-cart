@@ -9,27 +9,24 @@ class ProductViewComponent extends React.Component {
     
 
     componentDidMount() {
+        const prodId =  this.props.match.params.productId;
+        this.props.getProductByID(prodId);
     }
 
     render () {
         const prodId = this.props.match.params.productId;
-        const productsList = this.props.productsList;
-
-        let current;
-        productsList.map(i => {
-            if (i.productID == prodId) {
-                current = i;
-            }
-            
-        })
-
-        console.log(current)
+        const current = this.props.viewList.find(item => item.productID === prodId);
+        console.log(current);
+        //TODO FIX
 
         return (
         
             <div>
                 <div className="card image-width">
-                    <div >
+                    {
+                        !this.props.loading ?
+                        <div>
+                        <div >
                         <img className="card-img-top" src={current.imgUrl} alt="Shoes"/>
                     </div>
     
@@ -39,9 +36,10 @@ class ProductViewComponent extends React.Component {
                         <div className="card-text" >Brand : {current.brand}</div>
                         <div className="card-text" >Made in : {current.make}</div>
                         <div className="card-text" >Remarks : {current.remarks}</div>
-                        {/* <button onClick={()=>this.props.updateQuantity()}>Update</button> */}
-                        <div className="btn btn-primary" onClick={()=>this.props.addItemToCart(current)}>Add to Cart</div>
-                    </div>
+                       <div className="btn btn-primary" onClick={()=>this.props.addItemToCart(current)}>Add to Cart</div>
+                    </div></div> : "...Loading"
+                    }
+                    
                 </div>
             </div>
         )
@@ -49,19 +47,18 @@ class ProductViewComponent extends React.Component {
 }
 
 const mapStatesToProps = (state) => ({
-    ...state
-   })
+    ...state,
+    viewList : state.productsList.viewList,
+    loading : state.loadingReducer
+})
    
-//    const mapDispatchToProps = (dispatch) => ({
-//     addItemToCart : addItemToCart, 
-//        getProductByID : dispatch(getProductByID)
-//    })
 
-const mapDispatchToProps = {
-    addItemToCart, 
-    getProductByID,
-    getProducts,
-    updateQuantity
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        addItemToCart, 
+        getProductByID : (id)=>dispatch(getProductByID(id)),
+    }
+    
    }
    
 

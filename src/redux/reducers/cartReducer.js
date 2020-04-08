@@ -4,7 +4,7 @@ const initialState = {
     totalQuantity : 0
 };
 export default (state = initialState, action) => {
-    console.log(action);
+    //console.log(action);
     switch (action.type) {
         case  "ADD_ITEM_TO_CART" :
             let currentProduct = action.payload;
@@ -22,6 +22,7 @@ export default (state = initialState, action) => {
                 }
 
             } else {
+                console.log(currentProduct, action.payload)
                 currentProduct.quantity = 1;
                 currentProduct.itemTotalPrice = (currentProduct.quantity)*(currentProduct.price);
                 let grandTotal = state.grandTotal + currentProduct.price;
