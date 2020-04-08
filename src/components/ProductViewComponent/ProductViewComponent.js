@@ -15,29 +15,35 @@ class ProductViewComponent extends React.Component {
 
     render () {
         const prodId = this.props.match.params.productId;
-        const current = this.props.viewList.find(item => item.productID === prodId);
-        console.log(current);
-        //TODO FIX
+        const viewList = this.props.viewList;
+      
 
         return (
         
             <div>
                 <div className="card image-width">
                     {
-                        !this.props.loading ?
-                        <div>
-                        <div >
-                        <img className="card-img-top" src={current.imgUrl} alt="Shoes"/>
+                        viewList.map(item => {
+                            if (item.productID == prodId) {
+                                return (
+                        <div><div >
+                        <img className="card-img-top" src={item.imgUrl} alt="Shoes"/>
                     </div>
     
                     <div className="card-body product-card-body">
-                        <h5 className="card-title">{current.name}</h5>
-                        <div className="card-text">Price : {current.price} {current.currency}</div>
-                        <div className="card-text" >Brand : {current.brand}</div>
-                        <div className="card-text" >Made in : {current.make}</div>
-                        <div className="card-text" >Remarks : {current.remarks}</div>
-                       <div className="btn btn-primary" onClick={()=>this.props.addItemToCart(current)}>Add to Cart</div>
-                    </div></div> : "...Loading"
+                        <h5 className="card-title">{item.name}</h5>
+                        <div className="card-text">Price : {item.price} {item.currency}</div>
+                        <div className="card-text" >Brand : {item.brand}</div>
+                        <div className="card-text" >Made in : {item.make}</div>
+                        <div className="card-text" >Remarks : {item.remarks}</div>
+                       <div className="btn btn-primary" onClick={()=>this.props.addItemToCart(item)}>Add to Cart</div>
+                    </div></div>
+                                )
+                            }
+                        })
+                        
+                        
+                        
                     }
                     
                 </div>
