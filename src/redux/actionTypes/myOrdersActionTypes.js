@@ -4,7 +4,7 @@ import { requestLoading, reqSucc, error } from "./loadingActionTypes";
 
 
 let token = sessionStorage.getItem("token");
-let user = sessionStorage.getItem("user");
+let user = JSON.parse(sessionStorage.getItem("user"));
 const AuthStr = 'Bearer '.concat(token);
 console.log(user)
 
@@ -12,7 +12,7 @@ export function myOrders() {
     return (dispatch) => {
 
     dispatch(requestLoading());
-    axios.get(BE_BASEURL+"/api/products/myOrders/23", 
+    axios.get(BE_BASEURL+"/api/products/myOrders/"+user.id, 
     {
       headers : {
         "Authorization" :AuthStr,

@@ -30,10 +30,11 @@ class UserProfile extends React.Component {
   }
 
   updateProfile = (event) => {
+    let loggedUser = JSON.parse(sessionStorage.getItem("user"));
     let newProfile = {
       name : "Arepalli Praveenkumar",
       phoneNo : 784512369,
-      userID : 23
+      userID : loggedUser.id
     };
     event.preventDefault();
     this.props.saveUserProfile(newProfile);

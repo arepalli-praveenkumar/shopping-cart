@@ -8,6 +8,7 @@ import { requestLoading, reqSucc, error } from "./loadingActionTypes";
 // })
 
 let token = sessionStorage.getItem("token");
+let user = JSON.parse(sessionStorage.getItem("user"));
 const AuthStr = 'Bearer '.concat(token);
 
 export function saveUserProfile(profileInfo) {
@@ -40,7 +41,7 @@ export function getUserInfo() {
 
       dispatch(requestLoading());
         
-        axios.get(BE_BASEURL+"/api/users/praveen_a",
+        axios.get(BE_BASEURL+"/api/users/"+user.username,
         {
           headers : {
             "Authorization" :AuthStr,
