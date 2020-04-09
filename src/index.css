@@ -1,5 +1,12 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +17,86 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.main-home {
+  background-image: url("./images/home-page-bg.jpg");
+  background-size: cover;
+  height: 600px;
+  width: 100%;
+}
+
+.main-home h1 { 
+    color : white;
+    margin: 0 auto;
+    padding: 20px 20p;
+    max-width: 960px;
+    padding: 20px;
+}
+
+.main-home a {
+  color : yellow !important
+
+}
+
+
+.main-container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 20px;
+}
+
+.from-wrap {
+  background-color: white;
+  padding: 25px 30px;
+  color: #333;
+}
+
+.from-wrap h1,
+.from-wrap p {
+  text-align: center;
+  margin: 10px;
+}
+
+.from-wrap a {
+  text-decoration: none;
+  color: blue;
+}
+
+.form-group {
+  margin-top: 15px;
+  color: #666;
+}
+
+.from-wrap .form-group label {
+  display: block;
+  margin: 5px 0;
+}
+
+.from-wrap .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.from-wrap button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top : 20px;
+  background: #49c1a2;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #49c1a2;
+}
+
+.align-left {
+  text-align: left;
+  float: left;
+}
+
+.google-sign-in-btn {
+  margin: 10px 0;
 }

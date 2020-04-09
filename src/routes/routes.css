@@ -1,22 +1,62 @@
-.links {
-    display: flex;
-    justify-content: space-around;
-    min-height: 50px;
-}
-
-.link {
-    margin: 10px;
-}
-
-.logo {
-    width: 40px;
-}
-
 .routesview {
     height: auto;
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #3b5998;
     height: 100%;
     font-family: 'Numans', sans-serif;
+    /* border: 1px solid red; */
+}
+
+.routing {
+    /* border: 1px solid green; */
+    background-color: #333;
+    overflow: auto;
+    color: white;
+}
+
+.routing a {
+    color: white;
+    text-decoration: none;
+}
+
+.routing h1 {
+    float: left;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+
+.routing ul {
+    list-style: none;
+    float: right;
+}
+
+.routing ul li{
+    float: left;
+}
+
+.routing ul li a{
+    display: block;
+    padding: 20px;
+    text-align: center;
+}
+
+.routing ul li a:hover{
+    background-color: #444;
+    color: #f7c08a;
+}
+
+.before-sign-in {
+
+}
+
+.after-sign-in {
+
+}
+
+.logout-btn {
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 3px;
+    margin: 20px;
+    padding: 5px;
+    color: white;
 }

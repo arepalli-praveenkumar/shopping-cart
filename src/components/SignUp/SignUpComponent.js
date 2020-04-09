@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import { BE_BASEURL } from "../../constants";
-import "./signUp.css";
+
 
 class SignUpComponent extends React.Component { 
 
@@ -45,58 +45,33 @@ class SignUpComponent extends React.Component {
 
     render() {
         return (
-            <div class="container">
-            <div className="card bg-light d-flex justify-content-center h-100">
-<article className="card-body mx-auto" >
-	<h4 className="card-title mt-3 text-center links">Create Account</h4>
-	<p className="text-center links">Get started with your free account</p>
-	<p>
-		<a href="" className="btn btn-block btn-twitter"> <i className="fab fa-twitter"></i>   Login via Twitter</a>
-		<a href="" className="btn btn-block btn-facebook"> <i className="fab fa-facebook-f"></i>   Login via facebook</a>
-	</p>
-	<p className="divider-text">
-        <span className="bg-light">OR</span>
-    </p>
-	<form>
-	<div className="form-group input-group">
-		<div className="input-group-prepend">
-		    <span className="input-group-text"> <i className="fa fa-user"></i> </span>
-		 </div>
-        <input name="name" className="form-control" onChange={this.inputHandler} placeholder="Full name" type="text"/>
-    </div> 
-    <div className="form-group input-group">
-    	<div className="input-group-prepend">
-		    <span className="input-group-text"> <i className="fa fa-envelope"></i> </span>
-		 </div>
-        <input name="email" className="form-control" onChange={this.inputHandler} placeholder="Email address" type="email"/>
-    </div> 
-    <div className="form-group input-group">
-    	<div className="input-group-prepend">
-		    <span className="input-group-text"> <i className="fa fa-phone"></i> </span>
-		</div>
-    	<input name="username" className="form-control" onChange={this.inputHandler} placeholder="Enter username" type="text"/>
-    </div> 
-    
-    <div className="form-group input-group">
-    	<div className="input-group-prepend">
-		    <span className="input-group-text"> <i className="fa fa-lock"></i> </span>
-		</div>
-        <input name="password" className="form-control" onChange={this.inputHandler} placeholder="Create password" type="password"/>
-    </div>                                   
-    <div className="form-group">
-        <button type="submit" className="btn btn-primary btn-block" onClick={this.createAccount}> Create Account  </button>
-    </div>
-    <div class="card-footer">
-				<div class="d-flex justify-content-center links">
-                Have an account?<NavLink to="/login">Log In</NavLink>
-				</div>
-				
-			</div>  
-    {/* <p className="text-center links">Have an account? <NavLink to="/login" className="nav-link">Log In</NavLink> </p>                                                                  */}
-</form>
-</article>
-</div>
-</div>
+            <div class="main-container">
+                <div className="from-wrap">
+                <h1>Sign Up</h1>
+                <p>Get started with your free account</p>
+                <form>
+                    <div className="form-group">
+                        <label>Full Name</label>
+                        <input name="name" type="text" onChange={this.inputHandler} placeholder="Full name"/>
+                    </div>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input name="email" className="form-control" onChange={this.inputHandler} placeholder="Email address" type="email" />
+                    </div>
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input name="username" className="form-control" onChange={this.inputHandler} placeholder="Enter username" type="text" />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input name="password" className="form-control" onChange={this.inputHandler} placeholder="Create password" type="password" />
+                    </div>
+                    <button className="my-btn" onClick={this.createAccount}>Create Account</button>
+                    <p className="align -left">Have an account?<NavLink to="/login">Log In</NavLink></p>
+
+                </form>
+            </div>
+        </div>
         )
     }
 }

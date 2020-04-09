@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import GoogleLogin from 'react-google-login';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { BE_BASEURL } from "../../constants";
 import { login } from "../../redux/actionTypes/authActionTypes";
 
-import './login.css';
+
 
 //axios.defaults.baseURL = 'https://api.example.com';
 //axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
@@ -113,15 +113,9 @@ class LoginComponent extends React.Component {
 
         return (
             
-        <div className="container">
+        <div className="main-container">
 
-        <div className="row">
-
-          <div style={{ 'paddingTop': "20px" }} className="col-sm-12">
-
-            <div className="col-sm-4"></div>
-
-            <div className="col-sm-4">
+        <div className="google-sign-in-btn">
 
               <GoogleLogin
 
@@ -133,60 +127,28 @@ class LoginComponent extends React.Component {
 
                 onFailure={responseGoogle} ></GoogleLogin>
 
-            </div>
+        </div> 
 
-            <div className="col-sm-4"></div>
-
+        <div className="from-wrap">
+          <h1>Log In</h1>
+          <p>To access your services</p>
+          <form>
+          <div className="form-group">
+            <label>Username or Email</label>
+            <input type="text" name="usernameOrEmail" className="form-control"
+             onChange={this.inputHandler}/>
           </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input type="password" name="password"
+             className="form-control" onChange={this.inputHandler}/>
+          </div>
+          <button className="my-btn" onClick={this.authenticateUser}>Log In</button>
+          <p className="align -left">Don't have an account?<NavLink to="/signup">Sign Up</NavLink></p>
+
+        </form>
+
         </div>
-
-
-        <div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
-				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
-			</div>
-			<div class="card-body">
-				<form>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="text" name="usernameOrEmail" class="form-control" placeholder="Enter usernameOrEmail"  onChange={this.inputHandler}/>
-						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input name="password" type="password" class="form-control" placeholder="password" onChange={this.inputHandler}/>
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox" />Remember Me
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Login" onClick={this.authenticateUser} class="btn float-right login_btn" />
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<NavLink to="/signup">Sign Up</NavLink>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
         </div>
                         
         )

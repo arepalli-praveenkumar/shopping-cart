@@ -6,7 +6,7 @@ import {
     NavLink
   } from "react-router-dom";
 import { connect } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeComponent from "../components/Home/HomeComponent";
 import ProductsComponent from "../components/Products/Products";
 import CartComponent from "../components/Cart/Cart";
@@ -40,47 +40,42 @@ class RoutesComponents extends React.Component {
         return (
             
             <Router basename={basename}> 
-                <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-                <ul className="navbar-nav">
+                <nav className="routing">
                     {
                         !authToken ? 
-                        <div className="links">
-                        <li className="nav-item active">
+                        <ul className="before-sign-in">
+                        <li >
                             <NavLink to="/login" className="nav-link">Login</NavLink> 
                         </li>
-                        <li className="nav-item">
+                        <li >
                             <NavLink to="/signup" className="nav-link">Sign Up</NavLink> 
                         </li>
-                        </div>
+                        </ul>
                         :
-                        <div className="links">
-                        <li className="nav-item active">
-                            <NavLink to="/home" className="nav-link">Home *{process.env.PUBLIC_URL}*</NavLink> 
+                        <div>
+                        <h1 >
+                            <NavLink to="/home" className="nav-link">Shopping Cart</NavLink> 
+                        </h1>
+                        <ul className="before-sign-in">
+                        <li >
+                            <NavLink to="/home" className="nav-link">Home</NavLink> 
                         </li>
-                        <li className="nav-item active">
-                            <NavLink to="/home" className="nav-link"><img className="logo" src={shoppingCartImage} /></NavLink> 
-                        </li>
-                        <li className="nav-item">
+                        <li >
                             <NavLink to="/products" className="nav-link">Products</NavLink> 
                         </li>
-                        <li className="nav-item ">
+                        <li >
                             <NavLink to="/my-profile/user-profile" className="nav-link">My Profile</NavLink>
                         </li>
-                        <li className="nav-item">
+                        <li >
                             <NavLink to="/cart" className="nav-link">Cart ({this.props.totalQuantity})</NavLink> 
                         </li>
-                        <li className="nav-item">
-                        <input type="submit" className="btn float-right login_btn" value="Logout" 
+                        <li >
+                        <input type="submit" className="logout-btn" value="Logout" 
                         onClick={this.logoutSession} />
                         </li>
-                        <li className="nav-item">
-                            <div className="float-right login _btn nav-link">Hello Praveen!</div>
-                        </li>
-                        
+                        </ul>
                         </div>
                     }
-                
-                </ul>
                 </nav>
                 <div className="routesview">
                     {

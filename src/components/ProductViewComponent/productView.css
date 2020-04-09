@@ -1,0 +1,41 @@
+.item-body{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around;
+    border: 1px solid yellow; */
+}
+
+.prod-details {
+    /* margin: 20px; */
+    /* background-color: white; */
+}
+
+.prd-view-container {
+    background-color: white;
+}
+
+.prd-spec {
+    margin-left: 20px;
+}
+
+.prd-spec h2 {
+    color : brown
+}
+
+.card-title {
+    color : #0066c0;
+    margin: 5px 0;
+}
+
+
+.prd-pic {
+    /* border: 1px solid */
+}
+
+.view-cart-btn {
+    background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    text-align: center;
+}

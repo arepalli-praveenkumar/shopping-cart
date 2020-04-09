@@ -1,9 +1,9 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from "react-redux";
 import { addItemToCart, updateQuantity } from "../../redux/actionTypes/cartActionTypes";
 import { getProductByID, getProducts } from "../../redux/actionTypes/productsActionTypes"
-
+import './productView.css'
 
 class ProductViewComponent extends React.Component {
     
@@ -19,34 +19,32 @@ class ProductViewComponent extends React.Component {
       
 
         return (
-        
-            <div>
-                <div className="card image-width">
-                    {
-                        viewList.map(item => {
-                            if (item.productID == prodId) {
-                                return (
-                        <div><div >
-                        <img className="card-img-top" src={item.imgUrl} alt="Shoes"/>
-                    </div>
-    
-                    <div className="card-body product-card-body">
-                        <h5 className="card-title">{item.name}</h5>
-                        <div className="card-text">Price : {item.price} {item.currency}</div>
-                        <div className="card-text" >Brand : {item.brand}</div>
-                        <div className="card-text" >Made in : {item.make}</div>
-                        <div className="card-text" >Remarks : {item.remarks}</div>
-                       <div className="btn btn-primary" onClick={()=>this.props.addItemToCart(item)}>Add to Cart</div>
-                    </div></div>
-                                )
-                            }
-                        })
-                        
-                        
-                        
-                    }
-                    
-                </div>
+        <div className="prd-view-container">
+            <div className="prod-details">
+                {
+                    viewList.map(item => {
+                        if (item.productID == prodId) {
+                            return (
+                                <div className="item-body">
+                                    <div className="prd-pic">
+                                        <img className="card-img-top" src={item.imgUrl} alt="Shoes"/>
+                                    </div>
+                                    <div className="prd-spec">
+                                        {/* <h2>Specification</h2> */}
+                                    <h5 className="card-title">{item.name}</h5>
+                                    <div className="card-text">Price : &#x20b9; {item.price}</div>
+                                    <div className="card-text" >Brand : {item.brand}</div>
+                                    <div className="card-text" >Made in : {item.make}</div>
+                                    <div className="card-text" >Remarks : {item.remarks}</div>
+                                    <div className="view-cart-btn" onClick={()=>this.props.addItemToCart(item)}>Add to Cart</div>
+
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })
+                }
+            </div>
             </div>
         )
     }
@@ -61,7 +59,7 @@ const mapStatesToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch)=>{
     return {
-        addItemToCart, 
+        addItemToCart: (item) => dispatch(addItemToCart(item)), 
         getProductByID : (id)=>dispatch(getProductByID(id)),
     }
     
