@@ -30,26 +30,27 @@ class CartComponent extends React.Component {
         } else {
             this.props.decrementQuantity(item.productID);
         }
-        //this.props.decrementQuantity(item.productID);
     }
 
     ordetItems = () => {
+        let user = JSON.parse(sessionStorage.getItem("user"));
         let buyProducts = {
-            userID : 23,
+            userID : user.id,
             products : this.props.selectedItems,
             grandTotal : this.props.grandTotal,
             totalQnty: this.props.totalQuantity
 
         };
         this.props.orderItems(buyProducts);
+        this.props.history.push("/my-profile/my-orders");
     }
 
     render () {
         return (
             
-        <div className="container cart-container">
-            <div className="">
-            <div>Grand Total & Quantity : {this.props.grandTotal} & {this.props.totalQuantity}</div><br/>
+        <div className="cart-page">
+            <div className="cart-body">
+            <p className="total-price-qnty">Grand Total & Quantity : &#x20b9; {this.props.grandTotal} & {this.props.totalQuantity}</p>
             
                 <div className="col-12">
                     <table className="table table-image">
@@ -83,17 +84,14 @@ class CartComponent extends React.Component {
                                 {/* <td> 
                                     <input type="text" onChange={(event)=>this.updateQnty(event, item.productID)}/>
                                 </td> */}
-                                <td>{item.price} - {item.currency}</td>
-                                <td>{item.itemTotalPrice}</td>
+                                <td>&#x20b9; {item.price}</td>
+                                <td>&#x20b9; {item.itemTotalPrice}</td>
                             </tr>)
                             })
                         }
                     </tbody>
                     </table>  
-                    <div>Grand Total : {this.props.grandTotal}</div> 
-                    <div>Grand Quantity : {this.props.totalQuantity}</div>
-                    <input type="submit" value="Checkout" class="btn float-right login_btn" 
-                    onClick={this.ordetItems}/>
+                    <button className="my-btn" onClick={this.ordetItems}>Buy Now</button>
                 </div>
             </div>
         </div>

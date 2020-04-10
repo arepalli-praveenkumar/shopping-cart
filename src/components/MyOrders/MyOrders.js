@@ -19,9 +19,7 @@ class UserProfile extends React.Component  {
             <div className="card-body">
             <div className="row">
                 <div className="col-md-12">
-                    <h4>Your Orders Are Here</h4>
-                    <div>Grand Total & Quantity : {this.props.grandTotal} & {this.props.totalQuantity}</div>
-                    <hr/>
+                    <h1>Your Orders</h1>
                 </div>
 		    </div>
 
@@ -58,8 +56,8 @@ class UserProfile extends React.Component  {
                                                 </td>
                                                 <td>{order.name}</td>
                                                 <td>{order.quantity}</td>
-                                                <td>{order.price}</td>
-                                                <td>{order.itemTotalPrice}</td>
+                                                <td>&#x20b9; {order.price}</td>
+                                                <td>&#x20b9; {order.itemTotalPrice}</td>
                                             </tr> 
                                         )
                                     })

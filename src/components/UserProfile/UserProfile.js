@@ -57,50 +57,30 @@ render() {
   const { name, email, username, phoneNo }= this.props.userInfy;
   
    const profile = (!this.props.loading) ? 
-   <div className="row">
-                    <div className="form-group input-group">
-                      <div className="input-group-prepend">
-                          <span className="input-group-text"> <i className="fa fa-user"></i> </span>
-                      </div>
-                          <input name="name" value={name} 
-                          className="form-control" onChange={this.inputHandler} 
-                          placeholder="full name" type="text"/>
-                      </div> 
-                      {/* <div className="form-group input-group">
-                        <div className="input-group-prepend">
-                          <span className="input-group-text"> <i className="fa fa-envelope"></i> </span>
-                      </div>
-                          <input name="email" value={email} className="form-control" onChange={this.inputHandler} placeholder="email" type="email"/>
-                      </div> 
-                      <div className="form-group input-group">
-                        <div className="input-group-prepend">
-                          <span className="input-group-text"> <i className="fa fa-phone"></i> </span>
-                      </div>
-                        <input name="username" value={username} className="form-control" onChange={this.inputHandler} placeholder="username" type="text"/>
-                      </div>  */}
-                      
-                      <div className="form-group input-group">
-                        <div className="input-group-prepend">
-                          <span className="input-group-text"> <i className="fa fa-lock"></i> </span>
-                      </div>
-                          <input name="phoneNo" value={phoneNo} className="form-control" onChange={this.inputHandler} placeholder="phone no" type="input"/>
-                      </div>                                   
-                      <div className="form-group">
-                          <button className="btn btn-primary btn-block" onClick={this.updateProfile}> Update Profile </button>
-                      </div>
-                    </div>
+     <div className="profile-from-wrap">
+          <h1>Profile Information</h1>
+          <form>
+          <div className="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="full name"
+             onChange={this.inputHandler} value={name}/>
+          </div>
+          <div className="form-group">
+            <label>Phone Number</label>
+            <input type="text" name="phoneNo" placeholder="phone no"
+             className="form-control" onChange={this.inputHandler} value={phoneNo}/>
+          </div>
+          <button className="my-btn" onClick={this.updateProfile}>Update Profile</button>
+          
+
+        </form>
+
+        </div>
    :  <div>...Loading</div>
 
   return (
-    <div className="card user-profile">
-                <div className="card-body">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <h4>Your Profile</h4>
-                            <hr/>
-                        </div>
-                    </div>
-                    
+            <div className="">
+                <div className="">
                     {profile}
                 </div>
             </div>

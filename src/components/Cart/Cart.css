@@ -1,4 +1,4 @@
-.container {
+/* .container {
     padding: 2rem 0rem;
   }
   
@@ -16,4 +16,26 @@
 
   .cart-container {
     background-color: white;
+  } */
+
+
+  .cart-page {
+    background-color: white;
+  }
+
+  .cart-body {
+    padding: 10px;
+  }
+
+  .cart-page .my-btn {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #28a745;
+    border : 1px solid #28a745;
+    color: white;
+    margin-top: 10px;
+  }
+
+  .total-price-qnty {
+    float: right;
   }
