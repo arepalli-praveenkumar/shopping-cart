@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/shopping-cart/static/css/main.16f9f40d.chunk.css",
-    "main.js": "/shopping-cart/static/js/main.33890e0c.chunk.js",
-    "main.js.map": "/shopping-cart/static/js/main.33890e0c.chunk.js.map",
+    "main.css": "/shopping-cart/static/css/main.761d2d58.chunk.css",
+    "main.js": "/shopping-cart/static/js/main.70e5d907.chunk.js",
+    "main.js.map": "/shopping-cart/static/js/main.70e5d907.chunk.js.map",
     "runtime-main.js": "/shopping-cart/static/js/runtime-main.bcdff60e.js",
     "runtime-main.js.map": "/shopping-cart/static/js/runtime-main.bcdff60e.js.map",
     "static/js/2.83911725.chunk.js": "/shopping-cart/static/js/2.83911725.chunk.js",
     "static/js/2.83911725.chunk.js.map": "/shopping-cart/static/js/2.83911725.chunk.js.map",
     "index.html": "/shopping-cart/index.html",
-    "precache-manifest.42feb6f164f834a557ad8816603c40ef.js": "/shopping-cart/precache-manifest.42feb6f164f834a557ad8816603c40ef.js",
+    "precache-manifest.7c2280e6439178527d640d9968f630e1.js": "/shopping-cart/precache-manifest.7c2280e6439178527d640d9968f630e1.js",
     "service-worker.js": "/shopping-cart/service-worker.js",
-    "static/css/main.16f9f40d.chunk.css.map": "/shopping-cart/static/css/main.16f9f40d.chunk.css.map",
+    "static/css/main.761d2d58.chunk.css.map": "/shopping-cart/static/css/main.761d2d58.chunk.css.map",
     "static/js/2.83911725.chunk.js.LICENSE.txt": "/shopping-cart/static/js/2.83911725.chunk.js.LICENSE.txt",
     "static/media/index.css": "/shopping-cart/static/media/home-page-bg.309e2148.jpg",
     "static/media/shopping-cart.jfif": "/shopping-cart/static/media/shopping-cart.b55d9130.jfif"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.bcdff60e.js",
     "static/js/2.83911725.chunk.js",
-    "static/css/main.16f9f40d.chunk.css",
-    "static/js/main.33890e0c.chunk.js"
+    "static/css/main.761d2d58.chunk.css",
+    "static/js/main.70e5d907.chunk.js"
   ]
 }
