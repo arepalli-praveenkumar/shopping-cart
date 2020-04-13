@@ -27,39 +27,39 @@ class LoginComponent extends React.Component {
     }
 }
 
-    signup(res) {
+    // signup(res) {
         
-            const googleresponse = {
+    //         const googleresponse = {
         
-              Name: res.profileObj.name,
+    //           Name: res.profileObj.name,
         
-              email: res.profileObj.email,
+    //           email: res.profileObj.email,
         
-              token: res.googleId,
+    //           token: res.googleId,
         
-              Image: res.profileObj.imageUrl,
+    //           Image: res.profileObj.imageUrl,
         
-              ProviderId: 'Google'
+    //           ProviderId: 'Google'
         
-            };
+    //         };
         
-            console.log(googleresponse);
-            this.props.history.push('/products')
+    //         console.log(googleresponse);
+    //         this.props.history.push('/products')
             
         
-            // axios.post('http://localhost:60200/Api/Login/SocialmediaData', googleresponse)
+    //         // axios.post('http://localhost:60200/Api/Login/SocialmediaData', googleresponse)
         
-            //   .then((result) => {
+    //         //   .then((result) => {
         
-            //     let responseJson = result;
+    //         //     let responseJson = result;
         
-            //     sessionStorage.setItem("userData", JSON.stringify(result));
+    //         //     sessionStorage.setItem("userData", JSON.stringify(result));
         
-            //     this.props.history.push('/Dashboard')
+    //         //     this.props.history.push('/Dashboard')
         
-            //   });
+    //         //   });
         
-          };
+    //       };
 
     inputHandler = (event) => {
       let fieldName =event.currentTarget.name;
@@ -75,7 +75,10 @@ class LoginComponent extends React.Component {
       event.preventDefault();
         axios.post(BE_BASEURL+"/api/auth/signin", this.state.loginForm,
         {
-          //headers : {authorization :"Basic "+ window.btoa(INSTRUCTOR + ":" + PASSWORD)}
+          headers : {
+            //authorization :"Basic "+ window.btoa(INSTRUCTOR + ":" + PASSWORD)
+            "Access-Control-Allow-Origin" : "http://198.168.1.5:8080"
+          }
         })
         .then((res)=> {
             console.log(res);
@@ -97,25 +100,25 @@ class LoginComponent extends React.Component {
     render () {
 
 
-        const responseGoogle = (response) => {
+        // const responseGoogle = (response) => {
         
-            console.log(response);
+        //     console.log(response);
       
-            var res = response.profileObj;
+        //     var res = response.profileObj;
       
-            console.log(res);
+        //     console.log(res);
       
-            //debugger;
+        //     //debugger;
       
-            this.signup(response);
+        //     this.signup(response);
       
-          }
+        //   }
 
         return (
             
         <div className="main-container">
 
-        <div className="google-sign-in-btn">
+        {/* <div className="google-sign-in-btn">
 
               <GoogleLogin
 
@@ -127,7 +130,7 @@ class LoginComponent extends React.Component {
 
                 onFailure={responseGoogle} ></GoogleLogin>
 
-        </div> 
+        </div>  */}
 
         <div className="from-wrap">
           <h1>Log In</h1>
