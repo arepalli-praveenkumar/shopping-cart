@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { BE_BASEURL } from "../../constants";
 import { requestLoading, reqSucc, error } from "./loadingActionTypes";
-import { storeProductsToRedux } from './productsActionTypes'
 
 
 let token = sessionStorage.getItem("token");
@@ -16,27 +15,7 @@ export function addItemToCart(item) {
     }
 }
 
-export function getAllProducts() {
-    return (dispatch) => {
 
-    dispatch(requestLoading());
-    axios.get(BE_BASEURL+"/api/products/getAllProducts", 
-    {
-      headers : {
-        "Authorization" :AuthStr,
-        "Content-Type" : "application/json"
-      }
-    }).then( res => {
-      dispatch(reqSucc());
-      dispatch(storeProductsToRedux(res.data));
-    }).catch( err => {
-          console.log(err);
-          dispatch(error());
-          return err.data;
-    });
-
-    }
-}
 
 
 

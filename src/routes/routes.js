@@ -21,10 +21,18 @@ import './routes.css'
 
 class RoutesComponents extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
     logoutSession = () => {
         sessionStorage.removeItem("token");
+        sessionStorage.removeItem("user");
         this.props.logout(null);
-        //this.props.history.push("/signup");
+        //this.props.history.push("/login");
+        //this.props.history.push('/products')
+
         //this.props.history.push('/signup')
     }
 
@@ -97,7 +105,18 @@ class RoutesComponents extends React.Component {
                     }
                     
                 </div>
+                <footer>
+                        <a
+                    href="https://github.com/arepalli-praveenkumar/shopping-cart"
+                    className="github_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Source code on Github &copy; Praveenkumar</a>
+
+            </footer>
             </Router>
+            
+            
                 
         )
     }

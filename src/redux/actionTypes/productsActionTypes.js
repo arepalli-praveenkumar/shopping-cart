@@ -7,6 +7,42 @@ import { requestLoading, reqSucc, error } from "./loadingActionTypes";
 let token = sessionStorage.getItem("token");
 const AuthStr = 'Bearer '.concat(token);
 
+
+export function getAllProducts() {
+    return (dispatch) => {
+    dispatch(requestLoading());
+
+
+    axios.get("https://192.168.1.5:8443/ssl-test", 
+    {
+    }).then( res => {
+        console.log(res)
+      dispatch(reqSucc());
+     // dispatch(storeProductsToRedux(res.data));
+    }).catch( err => {
+          console.log(err);
+          dispatch(error());
+          return err.data;
+    });
+
+    axios.get(BE_BASEURL+"/api/products/getAllProducts", 
+    {
+      headers : {
+        "Authorization" :AuthStr,
+        "Content-Type" : "application/json"
+      }
+    }).then( res => {
+      dispatch(reqSucc());
+      dispatch(storeProductsToRedux(res.data));
+    }).catch( err => {
+          console.log(err);
+          dispatch(error());
+          return err.data;
+    });
+
+    }
+}
+
 export function getProductByID(id){
     return (dispatch) => {
     dispatch(requestLoading());

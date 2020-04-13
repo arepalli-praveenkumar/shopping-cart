@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { addItemToCart, getAllProducts } from "../../redux/actionTypes/cartActionTypes";
+import { addItemToCart } from "../../redux/actionTypes/cartActionTypes";
+import { getAllProducts } from "../../redux/actionTypes/productsActionTypes";
 import { NavLink } from "react-router-dom";
 import "./Products.css"
 
