@@ -6,3 +6,54 @@ th, td {
     padding: 15px;
     text-align: left;
   }
+
+.order-list {
+  display: flex;
+  background-color: #f2a365;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.orders-container {
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+
+.order-list .order-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.single-order {
+  display: flex;
+  flex-direction: column;
+}
+
+.ord-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ord-detail div {
+  width: 100%;
+  padding: 5px;
+}
+
+.ord-detail .lable {
+  min-width: 200px;
+}
+
+.currency {
+  color : red !important
+}
+
+.ord-detail .value {
+  /* width: 50%; */
+  min-width: 200px;
+  color: blue;
+
+}

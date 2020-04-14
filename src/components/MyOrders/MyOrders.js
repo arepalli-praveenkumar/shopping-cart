@@ -15,61 +15,48 @@ class UserProfile extends React.Component  {
     }
     render() {
     return (
-        <div classNameName="card">
-            <div className="card-body">
-            <div className="row">
-                <div className="col-md-12">
-                    <h1>Your Orders</h1>
-                </div>
-		    </div>
-
-            
-            
-                <div className="col-12">
-                    {
-                        this.props.orderedList.map(orders => {
-                            return(
-                            <div>
-                            <div className="row">Purchase Date : {orders.purchaseDate}</div>
-                            <div className="row">
-                            <table className="table table-image">
-                                <thead>
-                                    <tr>
-                                    <th>#</th>
-                                    <th>Image</th> 
-                                    <th>Product Name</th>
-                                    <th>Quantity</th>
-                                    <th>Price/Each</th>
-                                    <th>Total</th>
-                                    </tr>
-                                </thead>
-                                {
-                                    orders.products.map(order => {
-                                        return(
-                                            <tr>
-                                                <td scope="row">{order.productID}</td>
-                                                <td className="w-25">
-                                                    <NavLink to={`/product-view/${order.productID}`}>
-                                                        <img src={order.imgUrl} className="img-fluid cart-image-width img-thumbnail"
-                                                        alt={order.name}/>
-                                                    </NavLink>
-                                                </td>
-                                                <td>{order.name}</td>
-                                                <td>{order.quantity}</td>
-                                                <td>&#x20b9; {order.price}</td>
-                                                <td>&#x20b9; {order.itemTotalPrice}</td>
-                                            </tr> 
-                                        )
-                                    })
-                                }
-                            </table>
-                            </div>
-                            </div>)
-                        })
-                    }
-                </div>
-            </div>
-            </div>
+        <div classNameName="orders-container">
+            <h1>Your Orders</h1>
+            {
+                this.props.orderedList.map(orders => {
+                    return (
+                        <div className="">
+                            <h2>Purchase Date : {`${new Date(orders.purchaseDate)}`}</h2>
+                            {
+                                orders.products.map(order => {
+                                    return(
+                                    <div className="order-list">
+                                        <NavLink to={`/product-view/${order.productID}`}>
+                                            <img src={order.imgUrl} className="order-img"/>
+                                        </NavLink>
+                                        <div className="single-order">
+                                            <div className="ord-detail">
+                                                <div className="lable">Name</div>
+                                                <div className="value">{order.name}</div>
+                                            </div>
+                                            <div className="ord-detail">
+                                                <div className="lable">Price</div>
+                                                <div className="value currency">&#x20b9; {order.price}</div>
+                                            </div>
+                                            <div className="ord-detail">
+                                                <div className="lable">Quantity</div>
+                                                <div className="value">{order.quantity}</div>
+                                            </div>
+                                            <div className="ord-detail">
+                                                <div className="lable">Total Price</div>
+                                                <div className="value currency">&#x20b9; {order.itemTotalPrice}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                    
+                })
+            }       
+        </div>     
     )
   }
 }
