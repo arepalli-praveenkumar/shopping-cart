@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "gh-pages": "^2.2.0",
+    "history": "^4.10.1",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.0",
@@ -30,7 +31,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "postinstall": "sh ./scripts/link-certificate.sh"
-
   },
   "eslintConfig": {
     "extends": "react-app"

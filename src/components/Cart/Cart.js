@@ -5,7 +5,8 @@ import {
     decrementQuantity, 
     increamentQuantity, 
     orderItems } from "../../redux/actionTypes/cartActionTypes";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+
 import "./Cart.css"
 class CartComponent extends React.Component {
 
@@ -42,7 +43,7 @@ class CartComponent extends React.Component {
 
         };
         this.props.orderItems(buyProducts);
-        this.props.history.push("/my-profile/my-orders");
+        //this.props.history.push("/my-profile/my-orders");
     }
 
     render () {

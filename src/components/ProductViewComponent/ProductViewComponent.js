@@ -25,12 +25,11 @@ class ProductViewComponent extends React.Component {
                     viewList.map(item => {
                         if (item.productID == prodId) {
                             return (
-                                <div className="item-body">
+                                <div className="item-body" key={item.productID}>
                                     <div className="prd-pic">
                                         <img className="card-img-top" src={item.imgUrl} alt="Shoes"/>
                                     </div>
                                     <div className="prd-spec">
-                                        {/* <h2>Specification</h2> */}
                                     <h5 className="card-title">{item.name}</h5>
                                     <div className="card-text">Price : &#x20b9; {item.price}</div>
                                     <div className="card-text" >Brand : {item.brand}</div>

@@ -16,8 +16,10 @@ import MyProfile from "../components/MyProfile/MyProfile";
 import SignUpComponent from "../components/SignUp/SignUpComponent";
 import { logout } from "../redux/actionTypes/authActionTypes";
 
-import shoppingCartImage from '../images/shopping-cart.jfif';
 import './routes.css'
+
+
+//const history = require('history').createBrowserHistory;
 
 class RoutesComponents extends React.Component {
 
@@ -62,7 +64,7 @@ class RoutesComponents extends React.Component {
                         :
                         <div>
                         <h1 >
-                            <NavLink to="/home" className="nav-link">Shopping Cart</NavLink> 
+                            <NavLink to="/home" className="nav-link">Shopping <span className="header-cart">Cart</span></NavLink> 
                         </h1>
                         <ul className="before-sign-in">
                         <li >
@@ -95,6 +97,7 @@ class RoutesComponents extends React.Component {
                         <Route path="/login" component={LoginComponent}></Route>
                         <Route path="/product-view/:productId" component={ProductViewComponent}></Route>
                         <Route path="/home" component={HomeComponent}></Route>
+                        <Route path="/" component={HomeComponent}></Route>
                     </Switch>
                     :
                     <Switch>
@@ -105,13 +108,13 @@ class RoutesComponents extends React.Component {
                     }
                     
                 </div>
-                <footer>
+                <footer id="footer">
                         <a
                     href="https://github.com/arepalli-praveenkumar/shopping-cart"
                     className="github_link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Source code on Github &copy; Praveenkumar</a>
+                    >Source code on Github &copy; Copy Rights</a>
 
             </footer>
             </Router>

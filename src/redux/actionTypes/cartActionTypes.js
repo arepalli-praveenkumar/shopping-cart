@@ -1,7 +1,11 @@
 import axios from 'axios';
+import { createBrowserHistory } from 'history';
 import { BE_BASEURL } from "../../constants";
 import { requestLoading, reqSucc, error } from "./loadingActionTypes";
 
+import { useHistory } from "react-router-dom";
+
+const history = createBrowserHistory();
 
 let token = sessionStorage.getItem("token");
 const AuthStr = 'Bearer '.concat(token);
@@ -14,9 +18,6 @@ export function addItemToCart(item) {
         })
     }
 }
-
-
-
 
 
 export function updateQuantity(newQuantity,productID) {
@@ -59,6 +60,8 @@ export function clearCart() {
 export function orderItems(data) {
     return (dispatch) => {
 
+      //  let hit = useHistory();
+
     dispatch(requestLoading());
     axios.post(BE_BASEURL+"/api/products/orderItems", data, 
     {
@@ -69,6 +72,11 @@ export function orderItems(data) {
     }).then( res => {
       dispatch(reqSucc());
       dispatch(clearCart());
+      console.log(history)
+      //dispatch(push('/my-profile/my-orders'));
+      history.push(process.env.PUBLIC_URL+'/my-profile/my-orders')
+      //hit.push('/my-profile/my-orders');
+      //return <Redirect to='/my-profile/my-orders'  />
     }).catch( err => {
           console.log(err);
           dispatch(error());
