@@ -1,7 +1,6 @@
 .routesview {
     height: auto;
     background-color: #3b5998;
-    height: 100%;
     font-family: 'Numans', sans-serif;
     /* border: 1px solid red; */
 }
@@ -53,8 +52,9 @@
     color: #f7c08a;
 }
 
-.before-sign-in {
-
+.before-signin {
+    float: none !important;
+    text-align: center !important
 }
 
 .after-sign-in {
@@ -72,7 +72,8 @@
 
 #footer {
     background: white;
-    /* color: #333;*/
+    position: sticky;
+    bottom: 0;
     text-align: center; 
 }
 

@@ -53,14 +53,7 @@ class RoutesComponents extends React.Component {
                 <nav className="routing">
                     {
                         !authToken ? 
-                        <ul className="before-sign-in">
-                        <li >
-                            <NavLink to="/login" className="nav-link">Login</NavLink> 
-                        </li>
-                        <li >
-                            <NavLink to="/signup" className="nav-link">Sign Up</NavLink> 
-                        </li>
-                        </ul>
+                        <h1 className="before-signin">Shopping <span className="header-cart">Cart</span></h1>
                         :
                         <div>
                         <h1 >
@@ -114,7 +107,7 @@ class RoutesComponents extends React.Component {
                     className="github_link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >Source code on Github &copy; Copy Rights</a>
+                    >OPEN SOURCED on GITHUB</a>
 
             </footer>
             </Router>
