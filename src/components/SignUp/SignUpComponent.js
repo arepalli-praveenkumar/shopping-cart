@@ -21,7 +21,13 @@ class SignUpComponent extends React.Component {
     createAccount = (event) => {
 
         event.preventDefault();
-        axios.post(BE_BASEURL+"/api/auth/signup", this.state.singUpForm)
+        axios.post(BE_BASEURL+"/api/auth/signup",
+        {
+            headers : {
+              //authorization :"Basic "+ window.btoa(INSTRUCTOR + ":" + PASSWORD)
+              "Access-Control-Allow-Origin" : "*"
+            }
+          }, this.state.singUpForm)
         .then((res)=> {
             console.log(res);
             if (res.data.success === true) {

@@ -77,7 +77,7 @@ class LoginComponent extends React.Component {
         {
           headers : {
             //authorization :"Basic "+ window.btoa(INSTRUCTOR + ":" + PASSWORD)
-            "Access-Control-Allow-Origin" : "http://198.168.1.5:8080"
+            "Access-Control-Allow-Origin" : "*"
           }
         })
         .then((res)=> {
