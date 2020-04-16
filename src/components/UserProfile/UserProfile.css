@@ -28,3 +28,46 @@
     border : 1px solid #28a745;
     color: white;
 }
+
+.profile-pic {
+    width: 100px;
+}
+
+.profile-pic-sec {
+    border-radius: 50%;
+}
+
+.km-button--primary {
+    /* background-color: #5C5AA7; */
+    color: #28a745;
+}
+.km-button {
+    border-radius: 3px;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    height: 36px;
+    padding: 0px 16px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    min-width: 70px;
+    transition: all 0.3s ease-out;
+}
+.km-btn-file {
+    width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+  }
+  .km-btn-file-label {
+    line-height: 36px;
+    cursor: pointer;
+    border: 1px solid #28a745;
+    padding: 5px;
+    margin: 5px;
+  }
