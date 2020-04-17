@@ -45,11 +45,13 @@
     display: block;
     padding: 20px;
     text-align: center;
+    transition-property: all 1s ease-in-out;
 }
 
 .routing ul li a:hover{
     background-color: #444;
     color: #f7c08a;
+    /* transform: scale(2); */
 }
 
 .before-signin {
@@ -72,7 +74,7 @@
 
 #footer {
     background: white;
-    position: sticky;
+    /* position: sticky; */
     bottom: 0;
     text-align: center; 
 }

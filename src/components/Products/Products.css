@@ -15,6 +15,12 @@
     margin: 20px;
     padding: 10px;
     border: 1px solid;
+    box-shadow: 5px 5px 20px teal;
+}
+
+.prod-first:hover {
+    transform: scale(1.5);
+    /* z-index: 2; */
 }
 
 .prod-second {
