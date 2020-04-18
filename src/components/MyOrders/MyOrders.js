@@ -21,7 +21,7 @@ class UserProfile extends React.Component  {
                 this.props.orderedList.map(orders => {
                     return (
                         <div className="">
-                            <h2>Purchase Date : {`${new Date(orders.purchaseDate)}`}</h2>
+                            <h2>Purchase Date : {`${new Date(orders.purchaseDate).toLocaleDateString()}`}</h2>
                             {
                                 orders.products.map(order => {
                                     return(

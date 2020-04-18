@@ -94,6 +94,7 @@ class LoginComponent extends React.Component {
         })
         .catch((err) => {
             console.log(err);
+            alert("Login failed due to IP mismatch", err);
         });
     }
     
