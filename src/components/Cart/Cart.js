@@ -5,7 +5,9 @@ import {
     decrementQuantity, 
     increamentQuantity, 
     orderItems } from "../../redux/actionTypes/cartActionTypes";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 import "./Cart.css"
 class CartComponent extends React.Component {
@@ -47,11 +49,10 @@ class CartComponent extends React.Component {
     }
 
     render () {
-        return (
-            
-        <div className="cart-page">
-            <div className="cart-body">
-            <p className="total-price-qnty">Grand Total & Quantity : &#x20b9; {this.props.grandTotal} & {this.props.totalQuantity}</p>
+
+        const ordersList = 
+        <div>
+        <p className="total-price-qnty">Grand Total & Quantity : &#x20b9; {this.props.grandTotal} & {this.props.totalQuantity}</p>
             
                 <div className="col-12">
                     <table className="table table-image">
@@ -94,6 +95,21 @@ class CartComponent extends React.Component {
                     </table>  
                     <button className="my-btn" onClick={this.ordetItems}>Buy Now</button>
                 </div>
+                </div>
+
+        return (
+
+        <div className="cart-page">
+            <div className="cart-body">
+                {
+                    (this.props.selectedItems.length > 0) ? {ordersList}
+                    
+                    : <div className="empty-cart">
+                        <h1 className="text-center"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> Empty Cart. </h1>
+                        <NavLink to={`/products`}>Explore More</NavLink>
+                    </div>
+                }
+            
             </div>
         </div>
                         

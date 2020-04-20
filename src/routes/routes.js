@@ -15,6 +15,8 @@ import ProductViewComponent from "../components/ProductViewComponent/ProductView
 import MyProfile from "../components/MyProfile/MyProfile";
 import SignUpComponent from "../components/SignUp/SignUpComponent";
 import { logout } from "../redux/actionTypes/authActionTypes";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart, faHome } from '@fortawesome/free-solid-svg-icons'
 
 import './routes.css'
 
@@ -61,7 +63,9 @@ class RoutesComponents extends React.Component {
                         </h1>
                         <ul className="before-sign-in">
                         <li >
-                            <NavLink to="/home" className="nav-link">Home</NavLink> 
+                            <NavLink to="/home" className="nav-link">
+                                <FontAwesomeIcon icon={faHome}/>
+                            </NavLink> 
                         </li>
                         <li >
                             <NavLink to="/products" className="nav-link">Products</NavLink> 
@@ -70,7 +74,7 @@ class RoutesComponents extends React.Component {
                             <NavLink to="/my-profile/user-profile" className="nav-link">My Profile</NavLink>
                         </li>
                         <li >
-                            <NavLink to="/cart" className="nav-link">Cart ({this.props.totalQuantity})</NavLink> 
+                            <NavLink to="/cart" className="nav-link"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> ({this.props.totalQuantity})</NavLink> 
                         </li>
                         <li >
                         <input type="submit" className="logout-btn" value="Logout" 

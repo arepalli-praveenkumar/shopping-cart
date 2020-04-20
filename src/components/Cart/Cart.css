@@ -21,6 +21,7 @@
 
   .cart-page {
     background-color: white;
+    min-height: 960px;
   }
 
   .cart-body {
@@ -38,4 +39,22 @@
 
   .total-price-qnty {
     float: right;
+  }
+
+  .text-center {
+    text-align: center;
+    color: #28a745;
+  }
+
+  .empty-cart a{
+    width: 20%;
+    display: flex;
+    margin: 10px auto;
+    text-decoration: none;
+    text-align: center;
+    background-color: cornflowerblue;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
   }

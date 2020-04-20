@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { BE_BASEURL } from "../../constants";
 import { saveUserProfile, getUserInfo } from "../../redux/actionTypes/userProfileActionTypes";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import "./UserProfile.css"
 
 class UserProfile extends React.Component {
@@ -89,7 +91,7 @@ render() {
             <button className="my-btn" onClick={this.updateProfile}>Update Profile</button>
           </form>
       </div>
-   :  <div>...Loading</div>
+   :  <div className="loading-bar"><FontAwesomeIcon icon={faCircleNotch} size="lg" spin/>Loading...</div>
 
   return (
             <div className="">
