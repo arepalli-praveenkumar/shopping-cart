@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BE_BASEURL } from "../../constants";
 import { saveUserProfile, getUserInfo } from "../../redux/actionTypes/userProfileActionTypes";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import "./UserProfile.css"
 
 class UserProfile extends React.Component {

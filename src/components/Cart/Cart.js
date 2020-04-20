@@ -6,8 +6,9 @@ import {
     increamentQuantity, 
     orderItems } from "../../redux/actionTypes/cartActionTypes";
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+
 
 import "./Cart.css"
 class CartComponent extends React.Component {
@@ -50,8 +51,16 @@ class CartComponent extends React.Component {
 
     render () {
 
-        const ordersList = 
-        <div>
+        // const ordersList = 
+        
+
+        return (
+
+        <div className="cart-page">
+            <div className="cart-body">
+                {
+                    (this.props.selectedItems.length > 0) ? 
+                    <div>
         <p className="total-price-qnty">Grand Total & Quantity : &#x20b9; {this.props.grandTotal} & {this.props.totalQuantity}</p>
             
                 <div className="col-12">
@@ -80,8 +89,8 @@ class CartComponent extends React.Component {
                                 </td>
                                 <td>{item.name}</td>
                                 <td>
-                                    <button onClick={()=>this.incrementQnty(item)}>+</button>{item.quantity}
-                                    <button onClick={()=>this.decrementQnty(item)}>-</button>
+                                    <button className="inc-dec-btn" onClick={()=>this.incrementQnty(item)}>+</button>{item.quantity}
+                                    <button className="inc-dec-btn" onClick={()=>this.decrementQnty(item)}>-</button>
                                 </td>
                                 {/* <td> 
                                     <input type="text" onChange={(event)=>this.updateQnty(event, item.productID)}/>
@@ -96,19 +105,24 @@ class CartComponent extends React.Component {
                     <button className="my-btn" onClick={this.ordetItems}>Buy Now</button>
                 </div>
                 </div>
-
-        return (
-
-        <div className="cart-page">
-            <div className="cart-body">
-                {
-                    (this.props.selectedItems.length > 0) ? {ordersList}
                     
                     : <div className="empty-cart">
                         <h1 className="text-center"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> Empty Cart. </h1>
                         <NavLink to={`/products`}>Explore More</NavLink>
                     </div>
                 }
+
+                {
+
+                }
+
+                {
+                    this.props.loading ? 
+                    <div><FontAwesomeIcon icon={faCircleNotch} size="lg" spin/>Please wait...</div>
+                    :<div></div>
+                }
+
+                
             
             </div>
         </div>
@@ -120,7 +134,8 @@ class CartComponent extends React.Component {
 const mapStatesToProps = (state) => ({
     selectedItems : state.cartList.selectedItems,
     grandTotal : state.cartList.grandTotal,
-    totalQuantity: state.cartList.totalQuantity
+    totalQuantity: state.cartList.totalQuantity,
+    loading : state.loadingReducer.loading,
 });
 
 const mapDispatchToProps = (dispatch) => {

@@ -35,6 +35,7 @@
     border : 1px solid #28a745;
     color: white;
     margin-top: 10px;
+    cursor: pointer;
   }
 
   .total-price-qnty {
@@ -57,4 +58,15 @@
     padding: 10px;
     border-radius: 5px;
     color: white;
+  }
+
+  .inc-dec-btn {
+    padding: 7px;
+    border-radius: 5px;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    color: white;
+    cursor: pointer;
+    width: 30px;
+    margin: 5px;
   }
