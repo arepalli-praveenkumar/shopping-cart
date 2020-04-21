@@ -107,7 +107,7 @@ class RoutesComponents extends React.Component {
                     }
                     
                 </div>
-                <footer id="footer">
+                {/* <footer id="footer">
                 
                         <a
                     href="https://github.com/arepalli-praveenkumar/shopping-cart"
@@ -116,7 +116,7 @@ class RoutesComponents extends React.Component {
                     rel="noopener noreferrer"
                     ><FontAwesomeIcon icon={faGithub}/><span>Open Sourced on GitHub</span></a>
 
-            </footer>
+            </footer> */}
             </Router>
             
             
