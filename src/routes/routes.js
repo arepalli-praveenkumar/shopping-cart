@@ -15,12 +15,14 @@ import ProductViewComponent from "../components/ProductViewComponent/ProductView
 import MyProfile from "../components/MyProfile/MyProfile";
 import SignUpComponent from "../components/SignUp/SignUpComponent";
 import { logout } from "../redux/actionTypes/authActionTypes";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faHome } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import './routes.css'
 
-
+//library.add(faGithub, fab)
 //const history = require('history').createBrowserHistory;
 
 class RoutesComponents extends React.Component {
@@ -106,12 +108,13 @@ class RoutesComponents extends React.Component {
                     
                 </div>
                 <footer id="footer">
+                
                         <a
                     href="https://github.com/arepalli-praveenkumar/shopping-cart"
                     className="github_link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >OPEN SOURCED on GITHUB</a>
+                    ><FontAwesomeIcon icon={faGithub}/><span>Open Sourced on GitHub</span></a>
 
             </footer>
             </Router>

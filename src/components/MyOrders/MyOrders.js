@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { myOrders } from "../../redux/actionTypes/myOrdersActionTypes";
 import { NavLink } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
 import "./myOrders.css"
 
 class UserProfile extends React.Component  {
@@ -55,14 +56,21 @@ class UserProfile extends React.Component  {
                     )
                     
                 })
-            }       
+            }  
+
+            {
+                this.props.loading ? <Spinner/>
+                // <div><FontAwesomeIcon icon={faCog} size="lg" spin/>Please wait...</div>
+                :<div></div>
+            }     
         </div>     
     )
   }
 }
 
 const mapStatesToProps = (state) => ({
-    orderedList : state.orders.orderedList
+    orderedList : state.orders.orderedList,
+    loading : state.loadingReducer.loading,
 });
 
 const mapDispatchToProps = (dispatch) => {

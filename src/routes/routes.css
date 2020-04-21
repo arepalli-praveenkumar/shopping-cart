@@ -82,10 +82,18 @@
 
 #footer a {
     color: white;
+    font-family: "archia";
     text-align: center;
     text-decoration: none;
     background-color: #333;
     padding: 10px;
     border-radius: 5px;
+    text-transform: uppercase !important;
+    font-weight: 500;
 
 }
+
+.github_link svg {
+    padding-right: 3px;
+}
+

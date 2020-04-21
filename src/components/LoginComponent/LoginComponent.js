@@ -6,6 +6,9 @@ import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 import { BE_BASEURL } from "../../constants";
 import { login } from "../../redux/actionTypes/authActionTypes";
+import { requestLoading, reqSucc, error } from "../../redux/actionTypes/loadingActionTypes";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -73,6 +76,7 @@ class LoginComponent extends React.Component {
 
     authenticateUser = (event) => {
       event.preventDefault();
+      requestLoading();
         axios.post(BE_BASEURL+"/api/auth/signin", this.state.loginForm,
         {
           headers : {
@@ -133,6 +137,12 @@ class LoginComponent extends React.Component {
 
         </div>  */}
 
+            {
+                this.props.loading ? 
+                <div><FontAwesomeIcon icon={faCircleNotch} size="lg" spin/>Please wait...</div>
+                :<div></div>
+            } 
+
         <div className="from-wrap">
           <h1>Log In</h1>
           <p>To access your services</p>
@@ -160,7 +170,8 @@ class LoginComponent extends React.Component {
 }
 
 const mapStatesToProps = (state) => ({
-  isAuth : state.auth.isAuth
+  isAuth : state.auth.isAuth,
+  loading : state.loadingReducer.loading,
 });
 
 const mapDispatchToProps = {
