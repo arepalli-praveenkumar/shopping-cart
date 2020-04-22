@@ -101,9 +101,3 @@ code {
   margin: 10px 0;
 }
 
-.loading-bar {
-  display: flex;
-  font-size: 50px;
-  justify-content: center;
-  /* margin: 20px auto; */
-}

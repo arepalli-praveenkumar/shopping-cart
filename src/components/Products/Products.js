@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addItemToCart } from "../../redux/actionTypes/cartActionTypes";
 import { getAllProducts } from "../../redux/actionTypes/productsActionTypes";
 import { NavLink } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
 import "./Products.css"
 
 class ProductsComponent extends React.Component {
@@ -26,11 +27,12 @@ class ProductsComponent extends React.Component {
         const prodList = this.props.productsList.products
         return (
             <div className="prod-main-container">
-                <div className="list">
+                { this.props.loading ?  <Spinner/>:<div/>} 
+                <div className="list ">
                 {
                     prodList.map((prod, index) => {
                         return (
-                            <div className="prod-first" key={prod.productID}>
+                            <div className="prod-first fadeInUp trans" key={prod.productID}>
                                 <div>
                                     <NavLink to={`/product-view/${prod.productID}`}>
                                         <img src={prod.imgUrl} className="img-fluid"  alt=""/>
@@ -44,7 +46,8 @@ class ProductsComponent extends React.Component {
                             </div>
                         )
                     })
-                } </div>  
+                }
+                </div>  
            </div>
            
         )
@@ -52,7 +55,8 @@ class ProductsComponent extends React.Component {
 }
 
 const mapStatesToProps = (state) => ({
- ...state
+ ...state,
+ loading : state.loadingReducer.loading,
 })
 
 const mapDispatchToProps =  (dispatch) => {

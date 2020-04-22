@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import GoogleLogin from 'react-google-login';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { BE_BASEURL } from "../../constants";
 import { login } from "../../redux/actionTypes/authActionTypes";
 import { requestLoading, reqSucc, error } from "../../redux/actionTypes/loadingActionTypes";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import Spinner from "../Spinner/Spinner";
 
 
 
@@ -91,7 +90,11 @@ class LoginComponent extends React.Component {
                 sessionStorage.setItem("token",res.data.accessToken);
                 sessionStorage.setItem("user",JSON.stringify(res.data.userPrincipal));
                 this.props.login(res.data.accessToken);
-                this.props.history.push('/products')
+                setTimeout(() => {
+                  //this.props.history.push('/products')
+                  return <Redirect to='/login'/>
+                }, 1000);
+                
             } else {
                 alert("Login failed");
             }
@@ -139,7 +142,7 @@ class LoginComponent extends React.Component {
 
             {
                 this.props.loading ? 
-                <div><FontAwesomeIcon icon={faCircleNotch} size="lg" spin/>Please wait...</div>
+                <Spinner/>
                 :<div></div>
             } 
 

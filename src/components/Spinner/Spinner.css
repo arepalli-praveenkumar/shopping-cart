@@ -1,0 +1,10 @@
+.loading-bar {
+    display: flex;
+    font-size: 50px;
+    justify-content: center;
+    /* margin: 20px auto; */
+  }
+
+.loading-bar p {
+    font-weight: 500;
+}

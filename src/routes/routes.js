@@ -3,7 +3,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    NavLink
+    NavLink,
+    Redirect 
   } from "react-router-dom";
 import { connect } from 'react-redux';
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,10 +37,8 @@ class RoutesComponents extends React.Component {
         sessionStorage.removeItem("token");
         sessionStorage.removeItem("user");
         this.props.logout(null);
-        //this.props.history.push("/login");
-        //this.props.history.push('/products')
-
-        //this.props.history.push('/signup')
+        //return <Redirect to='/login'/>
+        return window.Location.href = "/login"
     }
 
 

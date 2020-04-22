@@ -18,10 +18,10 @@
     box-shadow: 5px 5px 20px teal;
 }
 
-.prod-first:hover {
+/* .prod-first:hover {
     transform: scale(1.5);
-    /* z-index: 2; */
-}
+     z-index: 2; 
+} */
 
 .prod-second {
     width: 170px;
@@ -39,6 +39,36 @@
 .prod-main-container {
     background-color: white;
 }
+
+@keyframes slideInFromTop {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadein {
+    from { opacity: 0}
+    to   { opacity: 1}
+  }
+
+.prod-main-container .list {
+    /* transition: ease-in; */
+    animation: 1s ease-out 0s 1 fadein ;
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: .45s;
+    animation-fill-mode: both;
+}
+
+.trans {
+    animation-delay: 1s;
+}
+
 .price-tag {
     display: inline-block;
     /* float: left; */

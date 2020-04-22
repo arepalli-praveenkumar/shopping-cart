@@ -61,6 +61,8 @@ export function orderItems(data) {
     return (dispatch) => {
 
       //  let hit = useHistory();
+      let token = sessionStorage.getItem("token");
+const AuthStr = 'Bearer '.concat(token);
 
     dispatch(requestLoading());
     axios.post(BE_BASEURL+"/api/products/orderItems", data, 
@@ -74,7 +76,8 @@ export function orderItems(data) {
       dispatch(clearCart());
       console.log(history)
       //dispatch(push('/my-profile/my-orders'));
-      history.push(process.env.PUBLIC_URL+'/my-profile/my-orders')
+      //history.push(process.env.PUBLIC_URL+'/my-profile/my-orders')
+      return window.location.href = process.env.PUBLIC_URL+'/my-profile/my-orders';
       //hit.push('/my-profile/my-orders');
       //return <Redirect to='/my-profile/my-orders'  />
     }).catch( err => {
