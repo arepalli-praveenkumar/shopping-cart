@@ -38,7 +38,8 @@ class RoutesComponents extends React.Component {
         sessionStorage.removeItem("user");
         this.props.logout(null);
         //return <Redirect to='/login'/>
-        return window.Location.href = "/login"
+        // window.Location.href = "/login"
+        //window.location.assign(window.location.hostname)
     }
 
 

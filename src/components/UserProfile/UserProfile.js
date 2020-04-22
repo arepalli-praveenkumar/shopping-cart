@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { BE_BASEURL } from "../../constants";
-import { saveUserProfile, getUserInfo } from "../../redux/actionTypes/userProfileActionTypes";
+import { saveUserProfile, getUserInfo, uploadProfilePic } from "../../redux/actionTypes/userProfileActionTypes";
 import Spinner from "../Spinner/Spinner";
-import "./UserProfile.css"
+import "./UserProfile.css";
+import maleAvatar from "../../images/avatar-male.jpg";
+import femaleAvatar from "../../images/avatar-female.png";
 
 class UserProfile extends React.Component {
 
@@ -18,7 +20,7 @@ class UserProfile extends React.Component {
       username : ""
       },
       token : "",
-      profileImage : ""
+      profilePicImgStr : ""
     }
   }
 
@@ -35,8 +37,8 @@ class UserProfile extends React.Component {
   updateProfile = (event) => {
     let loggedUser = JSON.parse(sessionStorage.getItem("user"));
     let newProfile = {
-      name : this.state.userInfo.name,
-      phoneNo : this.state.userInfo.phoneNo,
+      name : this.state.userInfo.name ? this.state.userInfo.name : loggedUser.name,
+      phoneNo : this.state.userInfo.phoneNo ? this.state.userInfo.phoneNo : loggedUser.phoneNo,
       userID : loggedUser.id
     };
     event.preventDefault();
@@ -45,9 +47,29 @@ class UserProfile extends React.Component {
   }
 
   loadImage = (event) => {
-    this.setState({
-      profileImage: URL.createObjectURL(event.target.files[0])
-    })
+
+    var fileReader = new FileReader(); 
+    //fileReader.onload = () => {};
+    fileReader.readAsDataURL(event.target.files[0]);
+    fileReader.onloadend =() => {
+      console.log(fileReader.result)
+      let loggedUser = JSON.parse(sessionStorage.getItem("user"));
+    let newProfile = {
+      profilePicImgStr : fileReader.result,
+      userID : loggedUser.id
+    };
+    this.props.uploadProfilePic(newProfile)
+    } 
+    //console.log(fileReader.readAsDataURL(event.target.files[0]))
+    // let loggedUser = JSON.parse(sessionStorage.getItem("user"));
+    // let newProfile = {
+    //   profilePicImgStr : URL.createObjectURL(event.target.files[0]),
+    //   userID : loggedUser.id
+    // };
+    // this.props.uploadProfilePic(newProfile)
+    // this.setState({
+    //   profilePicImgStr: URL.createObjectURL(event.target.files[0])
+    // })
   }
 
 shouldComponentUpdate() {
@@ -63,7 +85,9 @@ componentDidMount() {
 
 render() {
 
-  const { name, email, username, phoneNo }= this.props.userInfy;
+  const { name, email, username, phoneNo, profilePicImgStr }= this.props.userInfy;
+
+  const profilePic = profilePicImgStr ? profilePicImgStr : maleAvatar;
   
    const profile = (!this.props.loading) ? 
      <div className="profile-from-wrap">
@@ -71,7 +95,7 @@ render() {
           <form>
             <div className="profile-pic-sec">
               {/* <input type="file" onChange={this.loadImage}/> */}
-              <img  className="profile-pic" src={this.state.profileImage}/>
+              <img  className="profile-pic" src={profilePic}/>
               <input id="praveen" type="file" className="km-btn-file" onChange={this.loadImage} ></input>
               <label htmlFor="praveen" className="km-button km-button--primary km-btn-file-label">
                   <span>Upload</span>
@@ -87,6 +111,16 @@ render() {
               <input type="text" defaultValue={phoneNo} name="phoneNo" placeholder="phone no"
               className="form-control" onChange={this.inputHandler} />
             </div>
+            {/* <div className="form-group">
+              <label>Gender</label>
+              <input type="radio" id="male" name="gender" value="male"/>
+              <label for="male">Male</label>
+              <input type="radio" id="female" name="gender" value="female"/>
+              <label for="female">Female</label>
+              <input type="radio" id="other" name="gender" value="other"/>
+              <label for="other">Other</label>
+            </div> */}
+            
             <button className="my-btn" onClick={this.updateProfile}>Update Profile</button>
           </form>
       </div>
@@ -114,7 +148,8 @@ const mapDispatchToProps = (dispatch) => {
   console.log(dispatch);
   return {
     saveUserProfile : (data) => dispatch(saveUserProfile(data)),
-    getUserInfo : () => dispatch(getUserInfo())
+    getUserInfo : () => dispatch(getUserInfo()),
+    uploadProfilePic : (data) => dispatch(uploadProfilePic(data))
   }
 };
 

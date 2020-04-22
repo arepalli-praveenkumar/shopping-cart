@@ -65,3 +65,33 @@ export function getUserInfo() {
     }
 
 }
+
+export function uploadProfilePic(profileInfo) {
+
+  return (dispatch) => {
+
+    dispatch(requestLoading());
+      
+      axios.post(BE_BASEURL+"/api/users/uploadProfilePic", profileInfo,
+      {
+        headers : {
+          "Authorization" :AuthStr,
+          "Content-Type" : "application/json"
+        }
+      }).then( (res) => {
+        dispatch({
+          type : "SAVE_USER_PROFILE",
+          payload : res.data
+        })
+        console.log(res);
+        dispatch(reqSucc());
+        return res.data;
+      }).catch((err) => {
+        console.log(err);
+        dispatch(error());
+        return err.data;
+      })
+
+  }
+
+}

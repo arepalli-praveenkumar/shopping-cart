@@ -30,11 +30,12 @@
 }
 
 .profile-pic {
-    width: 100px;
+    border-radius: 10px;
+    width: 200px;
 }
 
 .profile-pic-sec {
-    border-radius: 50%;
+    text-align: center;
 }
 
 .km-button--primary {

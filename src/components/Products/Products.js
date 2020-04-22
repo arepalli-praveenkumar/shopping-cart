@@ -39,7 +39,7 @@ class ProductsComponent extends React.Component {
                                     </NavLink>
                                 </div>
                                 <div className="prod-second">
-                                    <h5>{prod.name}</h5>
+                                    <h5 title={prod.name}>{prod.name}</h5>
                                     <div className="price-tag">&#x20b9; {prod.price}</div>
                                     <div className="cart-btn" onClick={()=>this.props.addItemToCart(prod)}>Add to Cart</div>
                                 </div>
