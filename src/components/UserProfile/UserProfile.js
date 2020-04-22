@@ -17,7 +17,8 @@ class UserProfile extends React.Component {
       phoneNo : "",
       name : "",
       email : "",
-      username : ""
+      username : "",
+      gender : ""
       },
       token : "",
       profilePicImgStr : ""
@@ -38,7 +39,8 @@ class UserProfile extends React.Component {
     let loggedUser = JSON.parse(sessionStorage.getItem("user"));
     let newProfile = {
       name : this.state.userInfo.name ? this.state.userInfo.name : loggedUser.name,
-      phoneNo : this.state.userInfo.phoneNo ? this.state.userInfo.phoneNo : loggedUser.phoneNo,
+      phoneNo : this.state.userInfo.phoneNo ? this.state.userInfo.phoneNo : this.props.userInfy.phoneNo,
+      gender : this.state.userInfo.gender ? this.state.userInfo.gender : this.props.userInfy.gender,
       userID : loggedUser.id
     };
     event.preventDefault();
@@ -85,7 +87,20 @@ componentDidMount() {
 
 render() {
 
-  const { name, email, username, phoneNo, profilePicImgStr }= this.props.userInfy;
+  const genderObj = [
+    {
+      name : "Male",
+      value : "MALE"
+    },{
+      name : "Female",
+      value : "FEMALE"
+    },{
+      name : "Other",
+      value : "OTHER"
+    }
+  ]
+
+  const { name, email, username, phoneNo, profilePicImgStr, gender }= this.props.userInfy;
 
   const profilePic = profilePicImgStr ? profilePicImgStr : maleAvatar;
   
@@ -94,7 +109,6 @@ render() {
           <h1>Profile Information</h1>
           <form>
             <div className="profile-pic-sec">
-              {/* <input type="file" onChange={this.loadImage}/> */}
               <img  className="profile-pic" src={profilePic}/>
               <input id="praveen" type="file" className="km-btn-file" onChange={this.loadImage} ></input>
               <label htmlFor="praveen" className="km-button km-button--primary km-btn-file-label">
@@ -102,24 +116,30 @@ render() {
               </label>
             </div>
             <div className="form-group">
-              <label>Full Name</label>
+              <div className="label">Full Name</div>
               <input type="text" defaultValue={name} name="name" placeholder="full name"
               onChange={this.inputHandler}/>
             </div>
             <div className="form-group">
-              <label>Phone Number</label>
+              <div className="label">Phone Number</div>
               <input type="text" defaultValue={phoneNo} name="phoneNo" placeholder="phone no"
               className="form-control" onChange={this.inputHandler} />
             </div>
-            {/* <div className="form-group">
-              <label>Gender</label>
-              <input type="radio" id="male" name="gender" value="male"/>
-              <label for="male">Male</label>
-              <input type="radio" id="female" name="gender" value="female"/>
-              <label for="female">Female</label>
-              <input type="radio" id="other" name="gender" value="other"/>
-              <label for="other">Other</label>
-            </div> */}
+            <div className="form-group">
+              <div className="label">Gender</div>
+              
+                {
+                  genderObj.map((gen, index) => {
+                    return(<div className="radio-group">
+                    <input type="radio" id={gen.name} name="gender" defaultChecked={gen.value === gender}
+                     value={gen.value} onChange={this.inputHandler}/>
+                    <label for={gen.name}>{gen.name}</label>
+                    </div>)
+                  })
+                }
+              
+              
+            </div>
             
             <button className="my-btn" onClick={this.updateProfile}>Update Profile</button>
           </form>
