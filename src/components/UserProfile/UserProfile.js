@@ -102,7 +102,7 @@ render() {
 
   const { name, email, username, phoneNo, profilePicImgStr, gender }= this.props.userInfy;
 
-  const profilePic = profilePicImgStr ? profilePicImgStr : maleAvatar;
+  const profilePic = profilePicImgStr ? profilePicImgStr : (gender === "MALE") ? maleAvatar : femaleAvatar;
   
    const profile = (!this.props.loading) ? 
      <div className="profile-from-wrap">
