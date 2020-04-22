@@ -33,7 +33,7 @@ class ProductsComponent extends React.Component {
                     prodList.map((prod, index) => {
                         return (
                             <div className="prod-first fadeInUp trans" key={prod.productID}>
-                                <div>
+                                <div className="image-block">
                                     <NavLink to={`/product-view/${prod.productID}`}>
                                         <img src={prod.imgUrl} className="img-fluid"  alt=""/>
                                     </NavLink>

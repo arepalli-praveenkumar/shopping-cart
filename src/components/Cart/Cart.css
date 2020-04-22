@@ -28,6 +28,11 @@
     padding: 10px;
   }
 
+.cart-body .img-fluid {
+    width: 130px;
+    height: 130px;
+}
+
   .cart-page .my-btn {
     padding: 10px;
     border-radius: 5px;
