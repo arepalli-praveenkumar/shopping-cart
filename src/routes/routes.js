@@ -39,6 +39,8 @@ class RoutesComponents extends React.Component {
         this.props.logout(null);
         //return <Redirect to='/login'/>
         // window.Location.href = "/login"
+        //
+        return window.location.href = process.env.PUBLIC_URL+'/login';
         //window.location.assign(window.location.hostname)
     }
 
