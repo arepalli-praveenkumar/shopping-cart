@@ -40,7 +40,7 @@ class RoutesComponents extends React.Component {
         //return <Redirect to='/login'/>
         // window.Location.href = "/login"
         //
-        return window.location.href = process.env.PUBLIC_URL+'/login';
+        // return window.location.href = process.env.PUBLIC_URL+'/login';
         //window.location.assign(window.location.hostname)
     }
 
