@@ -32,13 +32,13 @@ class ProductsComponent extends React.Component {
                 {
                     prodList.map((prod, index) => {
                         return (
-                            <div className="prod-first fadeInUp trans" key={prod.productID}>
+                            <div className="prod-first" key={prod.productID}>
                                 <div className="image-block">
                                     <NavLink to={`/product-view/${prod.productID}`}>
-                                        <img src={prod.imgUrl} className="img-fluid"  alt=""/>
+                                        <img src={prod.imgUrl} className="img-fluid fadeInUp"  alt=""/>
                                     </NavLink>
                                 </div>
-                                <div className="prod-second">
+                                <div className="prod-second fadeInUp">
                                     <h5 title={prod.name}>{prod.name}</h5>
                                     <div className="price-tag">&#x20b9; {prod.price}</div>
                                     <div className="cart-btn" onClick={()=>this.props.addItemToCart(prod)}>Add to Cart</div>
