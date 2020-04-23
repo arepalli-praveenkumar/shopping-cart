@@ -98,6 +98,9 @@ class LoginComponent extends React.Component {
             } else {
                 alert("Login failed");
             }
+        }, (res)=>{
+          const errorData = res.response.data;
+          alert(errorData.message);
         })
         .catch((err) => {
             console.log(err);

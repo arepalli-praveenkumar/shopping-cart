@@ -36,7 +36,10 @@ class SignUpComponent extends React.Component {
             } else if (res.data.success === false) {
                 console.log(res.data.message);
             }
-        })
+        },(res)=>{
+            const errorData = res.response.data;
+            alert(errorData.message);
+          })
         .catch((err) => {
             console.log(err);
             alert("signup failed due to IP mismatch", err);
