@@ -90,10 +90,11 @@ class LoginComponent extends React.Component {
                 sessionStorage.setItem("token",res.data.accessToken);
                 sessionStorage.setItem("user",JSON.stringify(res.data.userPrincipal));
                 this.props.login(res.data.accessToken);
-                setTimeout(() => {
-                  //this.props.history.push('/products')
-                  return <Redirect to='/login'/>
-                }, 1000);
+                this.props.history.push('/products')
+                // setTimeout(() => {
+                //   //this.props.history.push('/products')
+                //   return <Redirect to='/products'/>
+                // }, 1000);
                 
             } else {
                 alert("Login failed");
