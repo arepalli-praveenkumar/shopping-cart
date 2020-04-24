@@ -37,6 +37,10 @@ export function saveUserProfile(profileInfo) {
 
 export function getUserInfo() {
 
+  let token = sessionStorage.getItem("token");
+let user = JSON.parse(sessionStorage.getItem("user"));
+const AuthStr = 'Bearer '.concat(token);
+
     return (dispatch) => {
 
       dispatch(requestLoading());
