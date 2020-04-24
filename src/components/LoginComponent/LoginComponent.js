@@ -74,7 +74,14 @@ class LoginComponent extends React.Component {
     }
 
     authenticateUser = (event) => {
-      event.preventDefault();
+
+      let loginForm = (this.state.loginForm && 
+        this.state.loginForm.usernameOrEmail && 
+        this.state.loginForm.password);
+
+        if (loginForm) {
+
+          event.preventDefault();
       requestLoading();
         axios.post(BE_BASEURL+"/api/auth/signin", this.state.loginForm,
         {
@@ -107,6 +114,12 @@ class LoginComponent extends React.Component {
             console.log(err);
             alert("Login failed due to IP mismatch", err);
         });
+
+        } else {
+          event.preventDefault();
+          alert("Please fill Username and Password");
+        }
+      
     }
     
     render () {
@@ -128,7 +141,7 @@ class LoginComponent extends React.Component {
 
         return (
             
-        <div className="main-container">
+        <div className="login-container">
 
         {/* <div className="google-sign-in-btn">
 
