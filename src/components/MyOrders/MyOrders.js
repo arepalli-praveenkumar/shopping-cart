@@ -3,9 +3,19 @@ import { connect } from 'react-redux';
 import { myOrders } from "../../redux/actionTypes/myOrdersActionTypes";
 import { NavLink } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle, faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
 import "./myOrders.css"
 
 class UserProfile extends React.Component  {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            activeEle : null
+        }
+    }
 
     componentDidMount() {
         this.props.myOrders();
@@ -14,19 +24,32 @@ class UserProfile extends React.Component  {
     formatDate = (date) =>{
         return new Date(date);
     }
+
+    myGoggle = (index) => {
+        console.log(index);
+        if (this.state.activeEle === index) {
+            this.setState({activeEle : null});
+        } else {
+            this.setState({activeEle : index});
+        }
+        
+    }
     render() {
     return (
-        <div classNameName="orders-container">
+        <div className="orders-container">
             <h1>Your Orders</h1>
             {
-                this.props.orderedList.map(orders => {
+                this.props.orderedList.map((orders, index )=> {
                     return (
-                        <div className="">
-                            <h2>Purchase Date : {`${new Date(orders.purchaseDate).toLocaleDateString()}`}</h2>
+                        <div className="order-section">
+
+                            <p onClick={()=>this.myGoggle(index)}>
+                                Purchase Date : {`${new Date(orders.purchaseDate).toLocaleString()}`}</p>
                             {
                                 orders.products.map(order => {
                                     return(
-                                    <div className="order-list">
+                                        <div className={(this.state.activeEle === index) ? "activeOrder": "inactiveOrd"}>
+                                    <div className="order-list" >
                                         <NavLink to={`/product-view/${order.productID}`}>
                                             <img src={order.imgUrl} className="order-img"/>
                                         </NavLink>
@@ -48,6 +71,7 @@ class UserProfile extends React.Component  {
                                                 <div className="value currency">&#x20b9; {order.itemTotalPrice}</div>
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                     )
                                 })
