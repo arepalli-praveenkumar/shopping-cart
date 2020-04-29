@@ -4,7 +4,7 @@ import { myOrders } from "../../redux/actionTypes/myOrdersActionTypes";
 import { NavLink } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faSadTear } from '@fortawesome/free-solid-svg-icons'
 import "./myOrders.css"
 
 class UserProfile extends React.Component  {
@@ -83,7 +83,14 @@ class UserProfile extends React.Component  {
             } 
 
             {
-                this.props.orderedList.length === 0 ? <div>Sorry No Orders</div> :<div></div>
+                this.props.orderedList.length === 0 ? 
+                <div className="empty-cart">
+                        <h1 className="text-center">
+                          <span>Sorry <FontAwesomeIcon icon={faSadTear}/></span>
+                          <span>.You didn't bought any item.</span>
+                        </h1>
+                        <NavLink to={`/products`}>Explore More</NavLink>
+                    </div> :<div></div>
             } 
 
             {

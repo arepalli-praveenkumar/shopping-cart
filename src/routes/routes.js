@@ -58,13 +58,13 @@ class RoutesComponents extends React.Component {
                 <nav className="routing">
                     {
                         !authToken ? 
-                        <h1 className="before-signin">Shopping <span className="header-cart">Cart</span></h1>
+                        <h1 className="bfr-signin">Shopping <span className="header-cart">Cart</span></h1>
                         :
-                        <div>
+                        <div className="main-header">
                         <h1 >
                             <NavLink to="/home" className="nav-link">Shopping <span className="header-cart">Cart</span></NavLink> 
                         </h1>
-                        <ul className="before-sign-in">
+                        <ul className="headerlist">
                         <li >
                             <NavLink to="/home" className="nav-link">
                                 <FontAwesomeIcon icon={faHome}/>
@@ -80,8 +80,9 @@ class RoutesComponents extends React.Component {
                             <NavLink to="/cart" className="nav-link"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> ({this.props.totalQuantity})</NavLink> 
                         </li>
                         <li >
-                        <input type="submit" className="logout-btn" value="Logout" 
-                        onClick={this.logoutSession} />
+                            <a href="void:javascript(0)" 
+                            className="logout-btn"
+                            onClick={this.logoutSession}>Logout</a>
                         </li>
                         </ul>
                         </div>

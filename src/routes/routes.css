@@ -6,7 +6,16 @@
 }
 
 .routing {
-    /* border: 1px solid green; */
+    background-color: #333;
+    overflow: auto;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    opacity: 0.9; 
+}
+
+.main-header {
     background-color: #333;
     overflow: auto;
     color: white;
@@ -14,11 +23,44 @@
     top: 0;
     z-index: 2;
     opacity: 0.9;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }
 
-.routing a {
+.routing .main-header a {
     color: white;
     text-decoration: none;
+}
+
+
+.routing .main-header .headerlist {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.routing .main-header ul li {
+    padding: 10px;
+}
+
+
+.routing .main-header ul li a{
+    padding: 10px;
+}
+
+.routing .main-header ul li a:hover{
+    background-color: #444;
+    color: #f7c08a;
+    border-radius: 5px;
+    /* transform: scale(2); */
+}
+
+.bfr-signin {
+    text-align: center;
+    padding: 10px;
 }
 
 /* highlight color for active element*/
@@ -26,39 +68,11 @@
  font-style: italic;
  color: #f7c08a;
  background-color: brown;
-}
-
-.routing h1 {
-    float: left;
-    padding-bottom: 20px;
-    margin-top: 10px;
-    padding-left: 20px;
+ border-radius: 5px;
 }
 
 .header-cart {
     color: #28a745;
-}
-
-.routing ul {
-    list-style: none;
-    float: right;
-}
-
-.routing ul li{
-    float: left;
-}
-
-.routing ul li a{
-    display: block;
-    padding: 20px;
-    text-align: center;
-    transition-property: all 1s ease-in-out;
-}
-
-.routing ul li a:hover{
-    background-color: #444;
-    color: #f7c08a;
-    /* transform: scale(2); */
 }
 
 .before-signin {
@@ -71,13 +85,14 @@
 }
 
 .logout-btn {
-    background-color: red;
-    border: 1px solid red;
-    border-radius: 3px;
-    margin: 20px;
-    padding: 5px;
-    color: white;
-    cursor: pointer;
+    background: red;
+    border-radius: 5px;
+}
+
+.logout-btn:hover {
+    background: red !important;
+    border-radius: 5px;
+    color: white !important;
 }
 
 #footer {
