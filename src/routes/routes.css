@@ -70,6 +70,7 @@
     background-color: brown;
     border-radius: 5px;
 } 
+
 .profile-page .active {
     font-style: italic;
     /* color: #f7c08a; */
