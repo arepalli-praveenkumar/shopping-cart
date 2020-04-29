@@ -64,11 +64,16 @@
 }
 
 /* highlight color for active element*/
-.active {
- font-style: italic;
- color: #f7c08a;
- background-color: brown;
- border-radius: 5px;
+.headerlist .active{
+    font-style: italic;
+    /* color: #f7c08a; */
+    background-color: brown;
+    border-radius: 5px;
+} 
+.profile-page .active {
+    font-style: italic;
+    /* color: #f7c08a; */
+    background-color: brown;
 }
 
 .header-cart {
