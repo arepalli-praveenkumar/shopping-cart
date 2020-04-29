@@ -4,7 +4,7 @@ import { myOrders } from "../../redux/actionTypes/myOrdersActionTypes";
 import { NavLink } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import "./myOrders.css"
 
 class UserProfile extends React.Component  {
@@ -42,7 +42,7 @@ class UserProfile extends React.Component  {
                 this.props.orderedList.map((orders, index )=> {
                     return (
                         <div className="order-section">
-
+                            <FontAwesomeIcon icon={faChevronRight}/>
                             <p onClick={()=>this.myGoggle(index)}>
                                 Purchase Date : {`${new Date(orders.purchaseDate).toLocaleString()}`}</p>
                             {
@@ -80,7 +80,11 @@ class UserProfile extends React.Component  {
                     )
                     
                 })
-            }  
+            } 
+
+            {
+                this.props.orderedList.length === 0 ? <div>Sorry No Orders</div> :<div></div>
+            } 
 
             {
                 this.props.loading ? <Spinner/>

@@ -21,6 +21,13 @@
     text-decoration: none;
 }
 
+/* highlight color for active element*/
+.active {
+ font-style: italic;
+ color: #f7c08a;
+ background-color: brown;
+}
+
 .routing h1 {
     float: left;
     padding-bottom: 20px;

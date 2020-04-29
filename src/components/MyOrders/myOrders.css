@@ -86,4 +86,5 @@ th, td {
   color: blue;
   margin-left: 10px;
   cursor: pointer;
+  display: inline;
 }

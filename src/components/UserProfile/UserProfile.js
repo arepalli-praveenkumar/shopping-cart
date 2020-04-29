@@ -7,6 +7,7 @@ import Spinner from "../Spinner/Spinner";
 import "./UserProfile.css";
 import maleAvatar from "../../images/avatar-male.jpg";
 import femaleAvatar from "../../images/avatar-female.png";
+import defaultImage from '../../images/default-image.jpg';
 
 class UserProfile extends React.Component {
 
@@ -102,7 +103,17 @@ render() {
 
   const { name, email, username, phoneNo, profilePicImgStr, gender }= this.props.userInfy;
 
-  const profilePic = profilePicImgStr ? profilePicImgStr : (gender === "MALE") ? maleAvatar : femaleAvatar;
+  // set profile picture
+  let profilePic = defaultImage;
+  if (profilePicImgStr) {
+    profilePic = profilePicImgStr;
+  } else if (gender === "MALE") {
+    profilePic = maleAvatar;
+  } else if(gender === "FEMALE") {
+    profilePic = femaleAvatar;
+  } else {
+    profilePic = defaultImage;
+  }
   
    const profile = (!this.props.loading) ? 
      <div className="profile-from-wrap">
