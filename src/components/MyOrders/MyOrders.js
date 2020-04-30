@@ -35,20 +35,27 @@ class UserProfile extends React.Component  {
         
     }
     render() {
-    return (
-        <div className="orders-container">
-            <h1>Your Orders</h1>
-            {
-                this.props.orderedList.map((orders, index )=> {
+
+        let ordersList = 
+        (this.props.loading) ? <Spinner/> :
+            (!this.props.loading && this.props.orderedList.length === 0) ?
+            <div className="empty-cart">
+                        <h1 className="text-center">
+                          <span>Sorry <FontAwesomeIcon icon={faSadTear}/></span>
+                          <span>.You didn't bought any item.</span>
+                        </h1>
+                        <NavLink to={`/products`}>Explore More</NavLink>
+                    </div>
+            : this.props.orderedList.map((orders, index )=> {
                     return (
-                        <div className="order-section">
+                        <div className="order-section" key={index}>
                             <FontAwesomeIcon icon={faChevronRight}/>
                             <p onClick={()=>this.myGoggle(index)}>
                                 Purchase Date : {`${new Date(orders.purchaseDate).toLocaleString()}`}</p>
                             {
-                                orders.products.map(order => {
+                                orders.products.map((order, ordInd) => {
                                     return(
-                                        <div className={(this.state.activeEle === index) ? "activeOrder": "inactiveOrd"}>
+                                        <div key={ordInd} className={(this.state.activeEle === index) ? "activeOrder": "inactiveOrd"}>
                                     <div className="order-list" >
                                         <NavLink to={`/product-view/${order.productID}`}>
                                             <img src={order.imgUrl} className="order-img"/>
@@ -80,24 +87,14 @@ class UserProfile extends React.Component  {
                     )
                     
                 })
-            } 
 
-            {
-                this.props.orderedList.length === 0 ? 
-                <div className="empty-cart">
-                        <h1 className="text-center">
-                          <span>Sorry <FontAwesomeIcon icon={faSadTear}/></span>
-                          <span>.You didn't bought any item.</span>
-                        </h1>
-                        <NavLink to={`/products`}>Explore More</NavLink>
-                    </div> :<div></div>
-            } 
+        
 
-            {
-                this.props.loading ? <Spinner/>
-                // <div><FontAwesomeIcon icon={faCog} size="lg" spin/>Please wait...</div>
-                :<div></div>
-            }     
+
+    return (
+        <div className="orders-container">
+            <h1>Your Orders</h1>
+            {ordersList}
         </div>     
     )
   }

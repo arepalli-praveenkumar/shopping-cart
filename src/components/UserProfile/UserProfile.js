@@ -141,7 +141,7 @@ render() {
               
                 {
                   genderObj.map((gen, index) => {
-                    return(<div className="radio-group">
+                    return(<div className="radio-group" key={index}>
                     <input type="radio" id={gen.name} name="gender" defaultChecked={gen.value === gender}
                      value={gen.value} onChange={this.inputHandler}/>
                     <label for={gen.name}>{gen.name}</label>
