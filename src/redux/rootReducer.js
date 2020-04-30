@@ -5,6 +5,7 @@ import userProfile from "./reducers/userProfileReducer";
 import auth from './reducers/authReducer';
 import loadingReducer from "./reducers/loadingReducer";
 import orderReducer from "./reducers/ordersReducer";
+import wishListReducer from "./reducers/wishListReducer";
 
 export default combineReducers({
     productsList, 
@@ -12,5 +13,6 @@ export default combineReducers({
     userProfile,
     auth,
     loadingReducer,
-    orders : orderReducer
+    orders : orderReducer,
+    wishList : wishListReducer
 })

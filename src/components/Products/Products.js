@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { addItemToCart } from "../../redux/actionTypes/cartActionTypes";
 import { getAllProducts } from "../../redux/actionTypes/productsActionTypes";
+import { savePrdToWishListDB, getWishListFromDB } from "../../redux/actionTypes/wishListActions"
 import { NavLink } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,12 +21,18 @@ class ProductsComponent extends React.Component {
         this.props.history.push(`/product-view/${id}`)
     }
 
-    addToWishList = () => {
-        alert("Work In Progres...!")
+    addToWishList = (prod) => {
+        //alert("Work In Progres...!");
+        let reqBody = {};
+        reqBody.userID = 23;
+        reqBody.product = prod;
+
+        this.props.savePrdToWishListDB(reqBody);
     }
 
     componentDidMount() {
         this.props.getAllProducts();
+        this.props.getWishListFromDB();
     }
 
     render () {
@@ -39,7 +46,7 @@ class ProductsComponent extends React.Component {
                     prodList.map((prod, index) => {
                         return (
                             <div className="prod-first" key={prod.productID}>
-                                <div className="wishicon" onClick={this.addToWishList}>
+                                <div className="wishicon" onClick={()=>this.addToWishList(prod)}>
                                     <FontAwesomeIcon icon={faHeart} size="2x"/>
                                 </div>
                                 <div className="image-block">
@@ -66,12 +73,15 @@ class ProductsComponent extends React.Component {
 const mapStatesToProps = (state) => ({
  ...state,
  loading : state.loadingReducer.loading,
+ wishList : state.wishList.list
 })
 
 const mapDispatchToProps =  (dispatch) => {
     return {
         addItemToCart : (prod) => dispatch(addItemToCart(prod)),
-        getAllProducts : () => dispatch(getAllProducts())
+        getAllProducts : () => dispatch(getAllProducts()),
+        savePrdToWishListDB : (data) => dispatch(savePrdToWishListDB(data)),
+        getWishListFromDB : () => dispatch(getWishListFromDB())
     }
     
 }

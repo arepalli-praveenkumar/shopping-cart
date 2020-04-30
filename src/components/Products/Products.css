@@ -204,7 +204,15 @@ footer a {
     text-align: end;
     color: #f7dfa5;
     cursor: pointer;
+    padding: 2px;
+    /* flex: 1; */
 }
+
+.wishicon svg:hover {
+    border-radius: 10px;
+    background: red;
+}
+
 
 /* direct element*/
 .prod-first:hover > .wishicon {

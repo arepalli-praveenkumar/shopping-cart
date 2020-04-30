@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { connect } from 'react-redux';
 
 class WishList extends React.Component {
     render() {
@@ -8,4 +9,13 @@ class WishList extends React.Component {
     }
 }
 
-export default WishList;
+
+const mapStatesToProps = (state) => ({
+    
+});
+
+const mapDispatchToProps = {
+    
+};
+
+export default connect(mapStatesToProps, mapDispatchToProps)(WishList);
