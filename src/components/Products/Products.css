@@ -199,3 +199,14 @@ footer {
 footer a {
     color: #f8f9fa!important
 }
+
+.wishicon {
+    text-align: end;
+    color: #f7dfa5;
+    cursor: pointer;
+}
+
+/* direct element*/
+.prod-first:hover > .wishicon {
+    
+}

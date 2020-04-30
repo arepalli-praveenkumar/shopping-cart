@@ -4,6 +4,8 @@ import { addItemToCart } from "../../redux/actionTypes/cartActionTypes";
 import { getAllProducts } from "../../redux/actionTypes/productsActionTypes";
 import { NavLink } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import "./Products.css"
 
 class ProductsComponent extends React.Component {
@@ -16,6 +18,10 @@ class ProductsComponent extends React.Component {
     productDetailedView = (id) => {
         console.log(id)
         this.props.history.push(`/product-view/${id}`)
+    }
+
+    addToWishList = () => {
+        alert("Work In Progres...!")
     }
 
     componentDidMount() {
@@ -33,6 +39,9 @@ class ProductsComponent extends React.Component {
                     prodList.map((prod, index) => {
                         return (
                             <div className="prod-first" key={prod.productID}>
+                                <div className="wishicon" onClick={this.addToWishList}>
+                                    <FontAwesomeIcon icon={faHeart} size="2x"/>
+                                </div>
                                 <div className="image-block">
                                     <NavLink to={`/product-view/${prod.productID}`}>
                                         <img src={prod.imgUrl} className="img-fluid fadeInUp"  alt=""/>

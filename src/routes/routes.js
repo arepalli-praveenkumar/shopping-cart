@@ -13,7 +13,7 @@ import ProductsComponent from "../components/Products/Products";
 import CartComponent from "../components/Cart/Cart";
 import LoginComponent from '../components/LoginComponent/LoginComponent';
 import ProductViewComponent from "../components/ProductViewComponent/ProductViewComponent";
-import MyProfile from "../components/MyProfile/MyProfile";
+import MyAccount from "../components/MyAccount/MyAccount";
 import SignUpComponent from "../components/SignUp/SignUpComponent";
 import { logout } from "../redux/actionTypes/authActionTypes";
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -74,7 +74,7 @@ class RoutesComponents extends React.Component {
                             <NavLink to="/products" className="nav-link">Products</NavLink> 
                         </li>
                         <li >
-                            <NavLink to="/my-profile/user-profile" className="nav-link">My Profile</NavLink>
+                            <NavLink to="/my-account/user-profile" className="nav-link">My Profile</NavLink>
                         </li>
                         <li >
                             <NavLink to="/cart" className="nav-link"><FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> ({this.props.totalQuantity})</NavLink> 
@@ -94,7 +94,7 @@ class RoutesComponents extends React.Component {
                         <Switch>
                         <Route path="/cart" component={CartComponent}></Route>
                         <Route path="/products" component={ProductsComponent}></Route>
-                        <Route path="/my-profile" component={MyProfile}></Route>
+                        <Route path="/my-account" component={MyAccount}></Route>
                         <Route path="/login" component={LoginComponent}></Route>
                         <Route path="/product-view/:productId" component={ProductViewComponent}></Route>
                         <Route path="/home" component={HomeComponent}></Route>
